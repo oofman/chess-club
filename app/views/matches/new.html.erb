@@ -1,0 +1,44 @@
+<section>
+    <h1>Add a match</h1>
+    <%= form_for(@match, :url => {:controller => "matches", :action => "new"}, :method => 'post' ) do |f| %>
+        <div>
+            <% if @match.errors.any? %>
+                <div>
+                    Please correct:<br />
+                    <% @match.errors.messages.each do |error| %>
+                        <div><strong><%= error[0].to_s.humanize %></strong> - <%= error[1][0] %></div>
+                    <% end %>
+                </div>
+            <% end %>
+        
+            <div>
+                <fieldset>
+                    <%= f.label :user_id %>
+                    <%= f.select :user_id, options_for_select(@members.collect { |x| [x.name, x.id]}),{ :prompt => 'Select User'} %>
+                </fieldset>
+            </div>
+
+            <div>
+                <fieldset>
+                    <label>Who won ?</label>
+                    <%= f.select :match_status, options_for_select(@status_options),{ :prompt => 'Select Status'} %>
+                </fieldset>
+            </div>
+        
+            <div>
+                <fieldset>
+                    <%= f.label :challenger_id %>
+                    <%= f.select :challenger_id, options_for_select(@members.collect { |x| [x.name, x.id]}),{class: 'check_elememt', :prompt => 'Select Challenger'} %>
+                </fieldset>
+            </div>
+            <div>
+                <button type="submit">Save</button>
+            </div>
+        </div>
+    <% end %>
+</section>
+<script type="text/javascript">
+$('.check_elememt').on('change')(){
+    console.log('here');
+}
+</script>

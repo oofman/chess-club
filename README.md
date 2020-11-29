@@ -23,9 +23,10 @@ Games
 ```
 # =============================
 ```
-1 - Basic Crud for Members
-2 - Submit Match & update rank
-3 - Leader board
+#1 - Basic Crud for Members
+#2 - Submit Match 
+3 - Update Rank
+4 - Leader board (members index)
 ```
 # =============================
 ```
