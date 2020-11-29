@@ -211,3 +211,12 @@ Processing by HomeController#home as HTML
 Completed 200 OK in 15ms (Views: 12.3ms | ActiveRecord: 0.0ms | Allocations: 3103)
 
 
+Started GET "/" for ::1 at 2020-11-29 08:12:18 +0200
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by HomeController#home as HTML
+  Rendering home/home.html.erb within layouts/application
+  Rendered home/home.html.erb within layouts/application (Duration: 13.3ms | Allocations: 185)
+  Rendered elements/_nav.html.erb (Duration: 0.8ms | Allocations: 81)
+Completed 200 OK in 121ms (Views: 104.0ms | ActiveRecord: 0.0ms | Allocations: 5485)
+
+
