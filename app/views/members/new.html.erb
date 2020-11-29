@@ -1,0 +1,37 @@
+<section>
+    <%= form_for(@member, :url => {:controller => "members", :action => "new"}, :method => 'post' ) do |f| %>
+        <div>
+            <% if @member.errors.any? %>
+                <div>
+                    Please correct:<br />
+                    <% @member.errors.messages.each do |error| %>
+                        <div><strong><%= error[0].to_s.humanize %></strong> - <%= error[1][0] %></div>
+                    <% end %>
+                </div>
+            <% end %>
+        
+            <div>
+                <fieldset>
+                    <%= f.label :name %>
+                    <%= f.text_field :name %>
+                </fieldset>
+            </div>
+            <div>
+                <fieldset>
+                    <%= f.label :email %>
+                    <%= f.text_field :email %>
+                </fieldset>
+            </div>
+            <div>
+                <fieldset>
+                    <%= f.label :dob %>
+                    <%= f.date_field :dob %>
+                </fieldset>
+            </div>
+        
+            <div>
+                <button type="submit">Save</button>
+            </div>
+        </div>
+    <% end %>
+</section>
