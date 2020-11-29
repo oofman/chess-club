@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_29_064346) do
+ActiveRecord::Schema.define(version: 2020_11_29_130438) do
 
   create_table "matches", force: :cascade do |t|
     t.integer "user_id"
@@ -19,9 +19,9 @@ ActiveRecord::Schema.define(version: 2020_11_29_064346) do
     t.integer "challenger_id"
     t.integer "challenger_rank"
     t.integer "challenger_rank_new"
-    t.boolean "user_won", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "match_status"
   end
 
   create_table "members", force: :cascade do |t|

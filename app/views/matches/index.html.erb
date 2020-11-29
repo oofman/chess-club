@@ -1,0 +1,34 @@
+<h1>Matches</h1>
+<table border="1">
+  <thead>
+    <tr>
+        <td>Created</td>
+        <td>User</td>
+        <th>Match Status</th>
+        <td>Challenger</td>
+        <td>Actions</td>
+    </tr>
+  </thead>
+  <% if @matches.length > 0 %>
+    <% @matches.each do |i| %>
+        <tr>
+            <td><%= i.created_at %></td>
+            <td>
+              <%= i.user.name %><br/>
+              <%= i.user.email %>
+            </td>
+            <td><%= @status_options[i.match_status] %></td>
+            <td>
+              <%= i.challenger.name %><br/>
+              <%= i.challenger.email %>
+            </td>
+            <td>
+              <a href="/matches/delete/<%= i.id %>" >Delete Match</a>
+            </td>
+        </tr>
+    <% end %>
+  <% else %>
+    <tr><td colspan="100%" style="text-align:center;">No Matches</td></tr>
+  <% end %>
+</table>
+<a href="/matches/new" >New Match</a>

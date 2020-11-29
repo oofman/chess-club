@@ -14,7 +14,6 @@ class MembersController < ApplicationController
         else
             # default add form (get request)
             @member = Member.new
-            
         end
     end
 
@@ -43,7 +42,8 @@ class MembersController < ApplicationController
         params.require(:member).permit(
             :name,
             :email,
-            :dob
+            :dob,
+            :current_rank
         )
     end
 end
