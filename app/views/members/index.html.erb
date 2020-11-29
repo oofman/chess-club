@@ -1,0 +1,31 @@
+<h1>MEMBERS</h1>
+<table border="1">
+  <thead>
+    <tr>
+        <td>Current Rank</td>
+        <td>Name</td>
+        <td>Email</td>
+        <td>DOB</td>
+        <td>Number of Matches</td>
+        <td>Actions</td>
+    </tr>
+  </thead>
+  <% if @members.length > 0 %>
+    <% @members.each do |i| %>
+        <tr>
+            <td><%= i.current_rank %></td>
+            <td><%= i.name %></td>
+            <td><%= i.email %></td>
+            <td><%= i.dob %></td>
+            <td><%= i.num_games %></td>
+          <td>
+            <a href="/members/edit/<%= i.id %>" >Edit Member</a>
+            <a href="/members/delete/<%= i.id %>" >Delete Member</a>
+          </td>
+        </tr>
+    <% end %>
+  <% else %>
+    <tr><td colspan="100%" style="text-align:center;">No Memebers</td></tr>
+  <% end %>
+</table>
+<a href="/members/new" >New Member</a>

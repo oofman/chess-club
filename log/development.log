@@ -244,3 +244,459 @@ Migrating to CreateMatches (20201129064346)
   [1m[35m (108.8ms)[0m  [1m[36mcommit transaction[0m
   [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
   [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/members" for ::1 at 2020-11-29 09:34:30 +0200
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by MembersController#index as HTML
+  Rendering members/index.html.erb within layouts/application
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members" ORDER BY current_rank[0m
+  ↳ app/views/members/index.html.erb:13
+  Rendered members/index.html.erb within layouts/application (Duration: 2.1ms | Allocations: 1466)
+  Rendered elements/_nav.html.erb (Duration: 0.1ms | Allocations: 81)
+Completed 200 OK in 12ms (Views: 6.7ms | ActiveRecord: 0.3ms | Allocations: 7326)
+
+
+Started GET "/member/new" for ::1 at 2020-11-29 09:34:34 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/member/new"):
+  
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.6) lib/puma/configuration.rb:228:in `call'
+puma (4.3.6) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.6) lib/puma/server.rb:472:in `process_client'
+puma (4.3.6) lib/puma/server.rb:328:in `block in run'
+puma (4.3.6) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/members/new" for ::1 at 2020-11-29 09:35:17 +0200
+Processing by MembersController#new as HTML
+Completed 406 Not Acceptable in 16ms (ActiveRecord: 0.6ms | Allocations: 6491)
+
+
+  
+ActionController::MissingExactTemplate (MembersController#new is missing a template for request formats: text/html):
+  
+actionpack (6.0.3.4) lib/action_controller/metal/implicit_render.rb:45:in `default_render'
+actionpack (6.0.3.4) lib/action_controller/metal/basic_implicit_render.rb:6:in `block in send_action'
+actionpack (6.0.3.4) lib/action_controller/metal/basic_implicit_render.rb:6:in `tap'
+actionpack (6.0.3.4) lib/action_controller/metal/basic_implicit_render.rb:6:in `send_action'
+actionpack (6.0.3.4) lib/abstract_controller/base.rb:195:in `process_action'
+actionpack (6.0.3.4) lib/action_controller/metal/rendering.rb:30:in `process_action'
+actionpack (6.0.3.4) lib/abstract_controller/callbacks.rb:42:in `block in process_action'
+activesupport (6.0.3.4) lib/active_support/callbacks.rb:135:in `run_callbacks'
+actionpack (6.0.3.4) lib/abstract_controller/callbacks.rb:41:in `process_action'
+actionpack (6.0.3.4) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (6.0.3.4) lib/action_controller/metal/instrumentation.rb:33:in `block in process_action'
+activesupport (6.0.3.4) lib/active_support/notifications.rb:180:in `block in instrument'
+activesupport (6.0.3.4) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activesupport (6.0.3.4) lib/active_support/notifications.rb:180:in `instrument'
+actionpack (6.0.3.4) lib/action_controller/metal/instrumentation.rb:32:in `process_action'
+actionpack (6.0.3.4) lib/action_controller/metal/params_wrapper.rb:245:in `process_action'
+activerecord (6.0.3.4) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (6.0.3.4) lib/abstract_controller/base.rb:136:in `process'
+actionview (6.0.3.4) lib/action_view/rendering.rb:39:in `process'
+actionpack (6.0.3.4) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.0.3.4) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.0.3.4) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.0.3.4) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.3.4) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.3.4) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.3.4) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.3.4) lib/action_dispatch/routing/route_set.rb:834:in `call'
+rack (2.2.3) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.3) lib/rack/etag.rb:27:in `call'
+rack (2.2.3) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.3) lib/rack/head.rb:12:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.2.3) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.3) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/cookies.rb:648:in `call'
+activerecord (6.0.3.4) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.3.4) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.6) lib/puma/configuration.rb:228:in `call'
+puma (4.3.6) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.6) lib/puma/server.rb:472:in `process_client'
+puma (4.3.6) lib/puma/server.rb:328:in `block in run'
+puma (4.3.6) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/members/new" for ::1 at 2020-11-29 09:40:22 +0200
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by MembersController#new as HTML
+  Rendering members/new.html.erb within layouts/application
+  Rendered members/new.html.erb within layouts/application (Duration: 161.1ms | Allocations: 66004)
+Completed 500 Internal Server Error in 173ms (ActiveRecord: 0.4ms | Allocations: 73510)
+
+
+  
+ActionView::Template::Error (undefined method `date' for #<ActionView::Helpers::FormBuilder:0x0000559a427d9fb0>):
+    25:             <div>
+    26:                 <fieldset>
+    27:                     <%= f.label :dob %>
+    28:                     <%= f.date :dob %>
+    29:                 </fieldset>
+    30:             </div>
+    31:         
+  
+app/views/members/new.html.erb:28
+app/views/members/new.html.erb:2
+Started GET "/members/new" for ::1 at 2020-11-29 09:40:34 +0200
+Processing by MembersController#new as HTML
+  Rendering members/new.html.erb within layouts/application
+  Rendered members/new.html.erb within layouts/application (Duration: 34.4ms | Allocations: 1716)
+  Rendered elements/_nav.html.erb (Duration: 0.2ms | Allocations: 81)
+Completed 200 OK in 46ms (Views: 42.9ms | ActiveRecord: 0.0ms | Allocations: 6321)
+
+
+Started POST "/members/new" for ::1 at 2020-11-29 09:41:10 +0200
+Processing by MembersController#new as HTML
+  Parameters: {"authenticity_token"=>"rxYZjf2+zGxzZ9arwjH+utjMkAGYCea6D653eeHPJW+K1ldgba+n4EvHh/tdC5h2/tH8/NMXgZZzpTRlwHGG2Q==", "member"=>{"name"=>"theo", "email"=>"ferreiratheosa@gmail.com", "dob"=>"2020-11-29"}}
+Completed 500 Internal Server Error in 100ms (ActiveRecord: 0.0ms | Allocations: 82976)
+
+
+  
+NameError (undefined local variable or method `member_params' for #<MembersController:0x00007f42dd3b6da8>
+Did you mean?  memeber_params):
+  
+app/controllers/members_controller.rb:10:in `new'
+Started POST "/members/new" for ::1 at 2020-11-29 09:41:26 +0200
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by MembersController#new as HTML
+  Parameters: {"authenticity_token"=>"rxYZjf2+zGxzZ9arwjH+utjMkAGYCea6D653eeHPJW+K1ldgba+n4EvHh/tdC5h2/tH8/NMXgZZzpTRlwHGG2Q==", "member"=>{"name"=>"theo", "email"=>"ferreiratheosa@gmail.com", "dob"=>"2020-11-29"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/members_controller.rb:11:in `new'
+  [1m[36mMember Create (0.3ms)[0m  [1m[32mINSERT INTO "members" ("name", "email", "dob", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "theo"], ["email", "ferreiratheosa@gmail.com"], ["dob", "2020-11-29"], ["created_at", "2020-11-29 07:41:27.254551"], ["updated_at", "2020-11-29 07:41:27.254551"]]
+  ↳ app/controllers/members_controller.rb:11:in `new'
+  [1m[35m (904.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/members_controller.rb:11:in `new'
+Redirected to http://localhost:3000/members
+Completed 302 Found in 929ms (ActiveRecord: 906.1ms | Allocations: 10728)
+
+
+Started GET "/members" for ::1 at 2020-11-29 09:41:28 +0200
+Processing by MembersController#index as HTML
+  Rendering members/index.html.erb within layouts/application
+  [1m[36mMember Load (0.5ms)[0m  [1m[34mSELECT "members".* FROM "members" ORDER BY current_rank[0m
+  ↳ app/views/members/index.html.erb:13
+  Rendered members/index.html.erb within layouts/application (Duration: 4.7ms | Allocations: 922)
+  Rendered elements/_nav.html.erb (Duration: 0.5ms | Allocations: 79)
+Completed 200 OK in 20ms (Views: 16.0ms | ActiveRecord: 0.5ms | Allocations: 4112)
+
+
+Started GET "/members/new" for ::1 at 2020-11-29 09:41:40 +0200
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by MembersController#new as HTML
+  Rendering members/new.html.erb within layouts/application
+  Rendered members/new.html.erb within layouts/application (Duration: 1.7ms | Allocations: 1458)
+  Rendered elements/_nav.html.erb (Duration: 0.0ms | Allocations: 6)
+Completed 200 OK in 11ms (Views: 4.0ms | ActiveRecord: 0.4ms | Allocations: 8539)
+
+
+Started POST "/members/new" for ::1 at 2020-11-29 09:41:55 +0200
+Processing by MembersController#new as HTML
+  Parameters: {"authenticity_token"=>"wBTCHtLKVETu8yo35GPcr5+m5T8k85uimdL4shlnPKHl1IzzQts/yNZTe2d7WbpjubuJwm/t/I7l2buuONmfFw==", "member"=>{"name"=>"qwe", "email"=>"ferreiratheosa@gmail.com", "dob"=>"2020-11-12"}}
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/members_controller.rb:11:in `new'
+  [1m[36mMember Create (1.8ms)[0m  [1m[32mINSERT INTO "members" ("name", "email", "dob", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "qwe"], ["email", "ferreiratheosa@gmail.com"], ["dob", "2020-11-12"], ["created_at", "2020-11-29 07:41:56.001958"], ["updated_at", "2020-11-29 07:41:56.001958"]]
+  ↳ app/controllers/members_controller.rb:11:in `new'
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/members_controller.rb:11:in `new'
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 2.1ms | Allocations: 3915)
+
+
+  
+ActiveRecord::RecordNotUnique (SQLite3::ConstraintException: UNIQUE constraint failed: members.email):
+  
+app/controllers/members_controller.rb:11:in `new'
+Started POST "/members/new" for ::1 at 2020-11-29 09:43:45 +0200
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by MembersController#new as HTML
+  Parameters: {"authenticity_token"=>"wBTCHtLKVETu8yo35GPcr5+m5T8k85uimdL4shlnPKHl1IzzQts/yNZTe2d7WbpjubuJwm/t/I7l2buuONmfFw==", "member"=>{"name"=>"qwe", "email"=>"ferreiratheosa@gmail.com", "dob"=>"2020-11-12"}}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 1368)
+
+
+  
+ArgumentError (The provided regular expression is using multiline anchors (^ or $), which may present a security risk. Did you mean to use \A and \z, or forgot to add the :multiline => true option?):
+  
+app/models/member.rb:3:in `<class:Member>'
+app/models/member.rb:1:in `<main>'
+app/controllers/members_controller.rb:10:in `new'
+Started POST "/members/new" for ::1 at 2020-11-29 09:44:33 +0200
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by MembersController#new as HTML
+  Parameters: {"authenticity_token"=>"wBTCHtLKVETu8yo35GPcr5+m5T8k85uimdL4shlnPKHl1IzzQts/yNZTe2d7WbpjubuJwm/t/I7l2buuONmfFw==", "member"=>{"name"=>"qwe", "email"=>"ferreiratheosa@gmail.com", "dob"=>"2020-11-12"}}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/members_controller.rb:11:in `new'
+  [1m[36mMember Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "members" WHERE LOWER("members"."email") = LOWER(?) LIMIT ?[0m  [["email", "ferreiratheosa@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/members_controller.rb:11:in `new'
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/members_controller.rb:11:in `new'
+  Rendering members/new.html.erb within layouts/application
+  Rendered members/new.html.erb within layouts/application (Duration: 1.3ms | Allocations: 1126)
+  Rendered elements/_nav.html.erb (Duration: 0.0ms | Allocations: 6)
+Completed 200 OK in 14ms (Views: 3.3ms | ActiveRecord: 0.6ms | Allocations: 11934)
+
+
+Started POST "/members/new" for ::1 at 2020-11-29 09:44:50 +0200
+Processing by MembersController#new as HTML
+  Parameters: {"authenticity_token"=>"f06FDhhm5Qwls91HXe8zm8BPZ07O10dAlq8joxERw2tajsvjiHeOgB0TjBfC1VVX5lILs4XJIGzqpGC/MK9g3Q==", "member"=>{"name"=>"qwe", "email"=>"ferreiratheosa1@gmail.com", "dob"=>"2020-11-12"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/members_controller.rb:11:in `new'
+  [1m[36mMember Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "members" WHERE LOWER("members"."email") = LOWER(?) LIMIT ?[0m  [["email", "ferreiratheosa1@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/members_controller.rb:11:in `new'
+  [1m[36mMember Create (0.5ms)[0m  [1m[32mINSERT INTO "members" ("name", "email", "dob", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "qwe"], ["email", "ferreiratheosa1@gmail.com"], ["dob", "2020-11-12"], ["created_at", "2020-11-29 07:44:50.605990"], ["updated_at", "2020-11-29 07:44:50.605990"]]
+  ↳ app/controllers/members_controller.rb:11:in `new'
+  [1m[35m (63.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/members_controller.rb:11:in `new'
+Redirected to http://localhost:3000/members
+Completed 302 Found in 83ms (ActiveRecord: 64.8ms | Allocations: 6027)
+
+
+Started GET "/members" for ::1 at 2020-11-29 09:44:50 +0200
+Processing by MembersController#index as HTML
+  Rendering members/index.html.erb within layouts/application
+  [1m[36mMember Load (0.3ms)[0m  [1m[34mSELECT "members".* FROM "members" ORDER BY current_rank[0m
+  ↳ app/views/members/index.html.erb:13
+  Rendered members/index.html.erb within layouts/application (Duration: 2.3ms | Allocations: 692)
+  Rendered elements/_nav.html.erb (Duration: 0.1ms | Allocations: 6)
+Completed 200 OK in 8ms (Views: 6.1ms | ActiveRecord: 0.3ms | Allocations: 2699)
+
+
+Started GET "/members" for ::1 at 2020-11-29 09:46:10 +0200
+Processing by MembersController#index as HTML
+  Rendering members/index.html.erb within layouts/application
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members" ORDER BY current_rank[0m
+  ↳ app/views/members/index.html.erb:13
+  Rendered members/index.html.erb within layouts/application (Duration: 1.4ms | Allocations: 959)
+  Rendered elements/_nav.html.erb (Duration: 0.1ms | Allocations: 79)
+Completed 200 OK in 5ms (Views: 3.8ms | ActiveRecord: 0.1ms | Allocations: 4061)
+
+
+Started GET "/members" for ::1 at 2020-11-29 09:46:45 +0200
+Processing by MembersController#index as HTML
+  Rendering members/index.html.erb within layouts/application
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members" ORDER BY current_rank[0m
+  ↳ app/views/members/index.html.erb:13
+  Rendered members/index.html.erb within layouts/application (Duration: 1.7ms | Allocations: 958)
+  Rendered elements/_nav.html.erb (Duration: 0.1ms | Allocations: 79)
+Completed 200 OK in 6ms (Views: 4.3ms | ActiveRecord: 0.1ms | Allocations: 4032)
+
+
+Started GET "/members" for ::1 at 2020-11-29 09:48:03 +0200
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by MembersController#index as HTML
+  Rendering members/index.html.erb within layouts/application
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members" ORDER BY current_rank[0m
+  ↳ app/views/members/index.html.erb:13
+  Rendered members/index.html.erb within layouts/application (Duration: 9.7ms | Allocations: 5170)
+  Rendered elements/_nav.html.erb (Duration: 0.0ms | Allocations: 6)
+Completed 200 OK in 14ms (Views: 11.5ms | ActiveRecord: 0.7ms | Allocations: 7756)
+
+
+Started GET "/members/delete/2" for ::1 at 2020-11-29 09:48:07 +0200
+Processing by MembersController#delete as HTML
+  Parameters: {"id"=>"2"}
+Completed 500 Internal Server Error in 71ms (ActiveRecord: 0.0ms | Allocations: 82649)
+
+
+  
+NameError (undefined local variable or method `id' for #<MembersController:0x00007f42dd0bb090>):
+  
+app/controllers/members_controller.rb:22:in `delete'
+Started GET "/members/delete/2" for ::1 at 2020-11-29 09:48:25 +0200
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by MembersController#delete as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/members_controller.rb:22:in `delete'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/members_controller.rb:23:in `delete'
+  [1m[36mMember Destroy (0.3ms)[0m  [1m[31mDELETE FROM "members" WHERE "members"."id" = ?[0m  [["id", 2]]
+  ↳ app/controllers/members_controller.rb:23:in `delete'
+  [1m[35m (67.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/members_controller.rb:23:in `delete'
+Redirected to http://localhost:3000/members
+Completed 302 Found in 81ms (ActiveRecord: 68.6ms | Allocations: 10665)
+
+
+Started GET "/members" for ::1 at 2020-11-29 09:48:25 +0200
+Processing by MembersController#index as HTML
+  Rendering members/index.html.erb within layouts/application
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT "members".* FROM "members" ORDER BY current_rank[0m
+  ↳ app/views/members/index.html.erb:13
+  Rendered members/index.html.erb within layouts/application (Duration: 1.1ms | Allocations: 660)
+  Rendered elements/_nav.html.erb (Duration: 0.0ms | Allocations: 6)
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.2ms | Allocations: 2804)
+
+
+Started GET "/members/edit/1" for ::1 at 2020-11-29 09:52:15 +0200
+Processing by MembersController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMember Load (0.4ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/members_controller.rb:29:in `edit'
+  Rendering members/edit.html.erb within layouts/application
+  Rendered members/edit.html.erb within layouts/application (Duration: 3.6ms | Allocations: 1120)
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 0.4ms | Allocations: 3028)
+
+
+  
+ActionView::Template::Error (First argument in form cannot contain nil or be empty):
+    1: <section>
+    2:     <%= form_for(@actor, :url => {:controller => "members", :action => "edit"}, :method => 'post', :html => {:id => 'edit_form'} ) do |f| %>
+    3:         <div>
+    4:             <% if @member.errors.any? %>
+    5:                 <div>
+  
+app/views/members/edit.html.erb:2
+Started GET "/members/edit/1" for ::1 at 2020-11-29 09:52:23 +0200
+Processing by MembersController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMember Load (0.3ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/members_controller.rb:29:in `edit'
+  Rendering members/edit.html.erb within layouts/application
+  Rendered members/edit.html.erb within layouts/application (Duration: 3.1ms | Allocations: 542)
+  Rendered elements/_nav.html.erb (Duration: 0.6ms | Allocations: 79)
+Completed 200 OK in 17ms (Views: 11.7ms | ActiveRecord: 0.3ms | Allocations: 4142)
+
+
+Started GET "/members/edit/1" for ::1 at 2020-11-29 09:52:36 +0200
+Processing by MembersController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMember Load (0.3ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/members_controller.rb:29:in `edit'
+  Rendering members/edit.html.erb within layouts/application
+  Rendered members/edit.html.erb within layouts/application (Duration: 6.8ms | Allocations: 1150)
+  Rendered elements/_nav.html.erb (Duration: 0.4ms | Allocations: 79)
+Completed 200 OK in 20ms (Views: 15.8ms | ActiveRecord: 0.3ms | Allocations: 4720)
+
+
+Started GET "/members/edit/1" for ::1 at 2020-11-29 09:52:54 +0200
+Processing by MembersController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMember Load (0.3ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/members_controller.rb:29:in `edit'
+  Rendering members/edit.html.erb within layouts/application
+  Rendered members/edit.html.erb within layouts/application (Duration: 6.1ms | Allocations: 1150)
+  Rendered elements/_nav.html.erb (Duration: 0.4ms | Allocations: 79)
+Completed 200 OK in 24ms (Views: 17.6ms | ActiveRecord: 0.3ms | Allocations: 4726)
+
+
+Started POST "/members/edit/1" for ::1 at 2020-11-29 09:53:08 +0200
+Processing by MembersController#edit as HTML
+  Parameters: {"authenticity_token"=>"lCp9Ebw/7/pkRGGqXWAdlW804z/ShMSh93lesUPOm/lS9E9g6RqcYxnglwEsQKBobPWfG7JpcGzYRWSwZK4StA==", "member"=>{"name"=>"theods", "email"=>"ferreiratheosa@gmail.com", "dob"=>"2020-11-29"}, "id"=>"1"}
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/members_controller.rb:29:in `edit'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/members_controller.rb:33:in `edit'
+  [1m[36mMember Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "members" WHERE LOWER("members"."email") = LOWER(?) AND "members"."id" != ? LIMIT ?[0m  [["email", "ferreiratheosa@gmail.com"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/members_controller.rb:33:in `edit'
+  [1m[36mMember Update (0.3ms)[0m  [1m[33mUPDATE "members" SET "name" = ?, "updated_at" = ? WHERE "members"."id" = ?[0m  [["name", "theods"], ["updated_at", "2020-11-29 07:53:08.289262"], ["id", 1]]
+  ↳ app/controllers/members_controller.rb:33:in `edit'
+  [1m[35m (86.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/members_controller.rb:33:in `edit'
+Redirected to http://localhost:3000/members
+Completed 302 Found in 104ms (ActiveRecord: 87.3ms | Allocations: 6838)
+
+
+Started GET "/members" for ::1 at 2020-11-29 09:53:08 +0200
+Processing by MembersController#index as HTML
+  Rendering members/index.html.erb within layouts/application
+  [1m[36mMember Load (0.5ms)[0m  [1m[34mSELECT "members".* FROM "members" ORDER BY current_rank[0m
+  ↳ app/views/members/index.html.erb:13
+  Rendered members/index.html.erb within layouts/application (Duration: 4.0ms | Allocations: 916)
+  Rendered elements/_nav.html.erb (Duration: 0.3ms | Allocations: 79)
+Completed 200 OK in 15ms (Views: 12.2ms | ActiveRecord: 0.5ms | Allocations: 4011)
+
+
+Started GET "/home" for ::1 at 2020-11-29 09:54:31 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/home"):
+  
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.6) lib/puma/configuration.rb:228:in `call'
+puma (4.3.6) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.6) lib/puma/server.rb:472:in `process_client'
+puma (4.3.6) lib/puma/server.rb:328:in `block in run'
+puma (4.3.6) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/" for ::1 at 2020-11-29 09:54:46 +0200
+Processing by HomeController#home as HTML
+  Rendering home/home.html.erb within layouts/application
+  Rendered home/home.html.erb within layouts/application (Duration: 0.2ms | Allocations: 73)
+  Rendered elements/_nav.html.erb (Duration: 0.2ms | Allocations: 80)
+Completed 200 OK in 4ms (Views: 3.0ms | ActiveRecord: 0.0ms | Allocations: 3113)
+
+
