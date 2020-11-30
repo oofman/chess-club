@@ -6862,3 +6862,1581 @@ Processing by MembersController#index as HTML
 Completed 200 OK in 12ms (Views: 9.3ms | ActiveRecord: 0.6ms | Allocations: 2699)
 
 
+Started GET "/" for ::1 at 2020-11-30 13:12:01 +0200
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#home as HTML
+  Rendering home/home.html.erb within layouts/application
+  Rendered home/home.html.erb within layouts/application (Duration: 208.0ms | Allocations: 608)
+  Rendered elements/_nav.html.erb (Duration: 0.6ms | Allocations: 80)
+Completed 200 OK in 295ms (Views: 288.5ms | ActiveRecord: 0.0ms | Allocations: 6205)
+
+
+Started GET "/members" for ::1 at 2020-11-30 13:12:03 +0200
+Processing by MembersController#index as HTML
+  Rendering members/index.html.erb within layouts/application
+  [1m[36mMember Load (0.5ms)[0m  [1m[34mSELECT "members".* FROM "members" ORDER BY current_rank[0m
+  ↳ app/views/members/index.html.erb:13
+  Rendered members/index.html.erb within layouts/application (Duration: 66.5ms | Allocations: 5781)
+  Rendered elements/_nav.html.erb (Duration: 0.0ms | Allocations: 6)
+Completed 200 OK in 87ms (Views: 71.2ms | ActiveRecord: 2.3ms | Allocations: 10115)
+
+
+Started GET "/matches" for ::1 at 2020-11-30 13:12:10 +0200
+Processing by MatchesController#index as HTML
+  Rendering matches/index.html.erb within layouts/application
+  [1m[36mMatch Load (0.2ms)[0m  [1m[34mSELECT "matches".* FROM "matches" ORDER BY created_at[0m
+  ↳ app/views/matches/index.html.erb:12
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 41], ["LIMIT", 1]]
+  ↳ app/views/matches/index.html.erb:17
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 42], ["LIMIT", 1]]
+  ↳ app/views/matches/index.html.erb:22
+  Rendered matches/index.html.erb within layouts/application (Duration: 16.5ms | Allocations: 10157)
+  Rendered elements/_nav.html.erb (Duration: 0.0ms | Allocations: 6)
+Completed 200 OK in 25ms (Views: 17.9ms | ActiveRecord: 0.9ms | Allocations: 14175)
+
+
+Started GET "/matches/delete/1" for ::1 at 2020-11-30 13:12:11 +0200
+Processing by MatchesController#delete as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMatch Load (0.5ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:25:in `delete'
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/matches_controller.rb:26:in `delete'
+  [1m[36mMatch Destroy (0.5ms)[0m  [1m[31mDELETE FROM "matches" WHERE "matches"."id" = ?[0m  [["id", 1]]
+  ↳ app/controllers/matches_controller.rb:26:in `delete'
+  [1m[35m (65.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/matches_controller.rb:26:in `delete'
+Redirected to http://localhost:3000/matches
+Completed 302 Found in 80ms (ActiveRecord: 66.3ms | Allocations: 5448)
+
+
+Started GET "/matches" for ::1 at 2020-11-30 13:12:11 +0200
+Processing by MatchesController#index as HTML
+  Rendering matches/index.html.erb within layouts/application
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" ORDER BY created_at[0m
+  ↳ app/views/matches/index.html.erb:12
+  Rendered matches/index.html.erb within layouts/application (Duration: 1.0ms | Allocations: 618)
+  Rendered elements/_nav.html.erb (Duration: 0.0ms | Allocations: 6)
+Completed 200 OK in 3ms (Views: 2.6ms | ActiveRecord: 0.1ms | Allocations: 2602)
+
+
+Started GET "/members" for ::1 at 2020-11-30 13:12:13 +0200
+Processing by MembersController#index as HTML
+  Rendering members/index.html.erb within layouts/application
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members" ORDER BY current_rank[0m
+  ↳ app/views/members/index.html.erb:13
+  Rendered members/index.html.erb within layouts/application (Duration: 0.9ms | Allocations: 734)
+  Rendered elements/_nav.html.erb (Duration: 0.0ms | Allocations: 6)
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.1ms | Allocations: 2709)
+
+
+Started GET "/members/delete/42" for ::1 at 2020-11-30 13:12:14 +0200
+Processing by MembersController#delete as HTML
+  Parameters: {"id"=>"42"}
+  [1m[36mMember Load (0.3ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 42], ["LIMIT", 1]]
+  ↳ app/controllers/members_controller.rb:21:in `delete'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/members_controller.rb:22:in `delete'
+  [1m[36mMember Destroy (0.6ms)[0m  [1m[31mDELETE FROM "members" WHERE "members"."id" = ?[0m  [["id", 42]]
+  ↳ app/controllers/members_controller.rb:22:in `delete'
+  [1m[35m (70.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/members_controller.rb:22:in `delete'
+Redirected to http://localhost:3000/members
+Completed 302 Found in 86ms (ActiveRecord: 71.8ms | Allocations: 5002)
+
+
+Started GET "/members" for ::1 at 2020-11-30 13:12:14 +0200
+Processing by MembersController#index as HTML
+  Rendering members/index.html.erb within layouts/application
+  [1m[36mMember Load (0.3ms)[0m  [1m[34mSELECT "members".* FROM "members" ORDER BY current_rank[0m
+  ↳ app/views/members/index.html.erb:13
+  Rendered members/index.html.erb within layouts/application (Duration: 2.3ms | Allocations: 695)
+  Rendered elements/_nav.html.erb (Duration: 0.1ms | Allocations: 6)
+Completed 200 OK in 7ms (Views: 6.1ms | ActiveRecord: 0.3ms | Allocations: 2672)
+
+
+Started GET "/members/delete/40" for ::1 at 2020-11-30 13:12:15 +0200
+Processing by MembersController#delete as HTML
+  Parameters: {"id"=>"40"}
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/controllers/members_controller.rb:21:in `delete'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/members_controller.rb:22:in `delete'
+  [1m[36mMember Destroy (0.5ms)[0m  [1m[31mDELETE FROM "members" WHERE "members"."id" = ?[0m  [["id", 40]]
+  ↳ app/controllers/members_controller.rb:22:in `delete'
+  [1m[35m (64.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/members_controller.rb:22:in `delete'
+Redirected to http://localhost:3000/members
+Completed 302 Found in 81ms (ActiveRecord: 65.0ms | Allocations: 4876)
+
+
+Started GET "/members" for ::1 at 2020-11-30 13:12:15 +0200
+Processing by MembersController#index as HTML
+  Rendering members/index.html.erb within layouts/application
+  [1m[36mMember Load (0.5ms)[0m  [1m[34mSELECT "members".* FROM "members" ORDER BY current_rank[0m
+  ↳ app/views/members/index.html.erb:13
+  Rendered members/index.html.erb within layouts/application (Duration: 3.3ms | Allocations: 654)
+  Rendered elements/_nav.html.erb (Duration: 0.1ms | Allocations: 6)
+Completed 200 OK in 10ms (Views: 7.2ms | ActiveRecord: 0.5ms | Allocations: 2620)
+
+
+Started GET "/members/delete/41" for ::1 at 2020-11-30 13:12:15 +0200
+Processing by MembersController#delete as HTML
+  Parameters: {"id"=>"41"}
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 41], ["LIMIT", 1]]
+  ↳ app/controllers/members_controller.rb:21:in `delete'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/members_controller.rb:22:in `delete'
+  [1m[36mMember Destroy (0.4ms)[0m  [1m[31mDELETE FROM "members" WHERE "members"."id" = ?[0m  [["id", 41]]
+  ↳ app/controllers/members_controller.rb:22:in `delete'
+  [1m[35m (63.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/members_controller.rb:22:in `delete'
+Redirected to http://localhost:3000/members
+Completed 302 Found in 78ms (ActiveRecord: 64.1ms | Allocations: 4880)
+
+
+Started GET "/members" for ::1 at 2020-11-30 13:12:15 +0200
+Processing by MembersController#index as HTML
+  Rendering members/index.html.erb within layouts/application
+  [1m[36mMember Load (0.5ms)[0m  [1m[34mSELECT "members".* FROM "members" ORDER BY current_rank[0m
+  ↳ app/views/members/index.html.erb:13
+  Rendered members/index.html.erb within layouts/application (Duration: 3.4ms | Allocations: 613)
+  Rendered elements/_nav.html.erb (Duration: 0.1ms | Allocations: 6)
+Completed 200 OK in 13ms (Views: 10.4ms | ActiveRecord: 0.5ms | Allocations: 2572)
+
+
+Started GET "/members/new" for ::1 at 2020-11-30 13:12:29 +0200
+Processing by MembersController#new as HTML
+  Rendering members/new.html.erb within layouts/application
+  Rendered members/new.html.erb within layouts/application (Duration: 31.8ms | Allocations: 2826)
+  Rendered elements/_nav.html.erb (Duration: 0.0ms | Allocations: 6)
+Completed 200 OK in 38ms (Views: 34.7ms | ActiveRecord: 0.0ms | Allocations: 4932)
+
+
+Started POST "/members/new" for ::1 at 2020-11-30 13:12:36 +0200
+Processing by MembersController#new as HTML
+  Parameters: {"authenticity_token"=>"HP0yDD2zBnd22hKoXZL4LbF2OYZppEMindswoOfJqlc5PXzhraJt+056Q/jCqJ7hl2tVeyK6JA7h0HO8xncJ4Q==", "member"=>{"name"=>"A", "email"=>"A", "dob"=>"2020-11-03"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/members_controller.rb:11:in `new'
+  [1m[36mMember Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "members" WHERE LOWER("members"."email") = LOWER(?) LIMIT ?[0m  [["email", "A"], ["LIMIT", 1]]
+  ↳ app/controllers/members_controller.rb:11:in `new'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "members"[0m
+  ↳ app/models/member.rb:13:in `set_rank'
+  [1m[36mMember Create (0.3ms)[0m  [1m[32mINSERT INTO "members" ("name", "email", "dob", "current_rank", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "A"], ["email", "A"], ["dob", "2020-11-03"], ["current_rank", 1], ["created_at", "2020-11-30 11:12:36.745785"], ["updated_at", "2020-11-30 11:12:36.745785"]]
+  ↳ app/controllers/members_controller.rb:11:in `new'
+  [1m[35m (892.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/members_controller.rb:11:in `new'
+Redirected to http://localhost:3000/members
+Completed 302 Found in 909ms (ActiveRecord: 893.4ms | Allocations: 7210)
+
+
+Started GET "/members" for ::1 at 2020-11-30 13:12:37 +0200
+Processing by MembersController#index as HTML
+  Rendering members/index.html.erb within layouts/application
+  [1m[36mMember Load (0.4ms)[0m  [1m[34mSELECT "members".* FROM "members" ORDER BY current_rank[0m
+  ↳ app/views/members/index.html.erb:13
+  Rendered members/index.html.erb within layouts/application (Duration: 2.9ms | Allocations: 654)
+  Rendered elements/_nav.html.erb (Duration: 0.1ms | Allocations: 6)
+Completed 200 OK in 9ms (Views: 7.0ms | ActiveRecord: 0.4ms | Allocations: 2635)
+
+
+Started GET "/members/new" for ::1 at 2020-11-30 13:12:39 +0200
+Processing by MembersController#new as HTML
+  Rendering members/new.html.erb within layouts/application
+  Rendered members/new.html.erb within layouts/application (Duration: 3.9ms | Allocations: 754)
+  Rendered elements/_nav.html.erb (Duration: 0.1ms | Allocations: 6)
+Completed 200 OK in 11ms (Views: 9.6ms | ActiveRecord: 0.0ms | Allocations: 2708)
+
+
+Started POST "/members/new" for ::1 at 2020-11-30 13:12:47 +0200
+Processing by MembersController#new as HTML
+  Parameters: {"authenticity_token"=>"mQVHyVv6MFHoJkCPC4pCHpb81izaDcMWLY+h2irsPZ28xQkky+tb3dCGEd+UsCTSsOG60ZETpDpRhOLGC1KeKw==", "member"=>{"name"=>"B", "email"=>"B", "dob"=>"2020-11-11"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/members_controller.rb:11:in `new'
+  [1m[36mMember Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "members" WHERE LOWER("members"."email") = LOWER(?) LIMIT ?[0m  [["email", "B"], ["LIMIT", 1]]
+  ↳ app/controllers/members_controller.rb:11:in `new'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "members"[0m
+  ↳ app/models/member.rb:13:in `set_rank'
+  [1m[36mMember Create (0.4ms)[0m  [1m[32mINSERT INTO "members" ("name", "email", "dob", "current_rank", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "B"], ["email", "B"], ["dob", "2020-11-11"], ["current_rank", 2], ["created_at", "2020-11-30 11:12:47.444365"], ["updated_at", "2020-11-30 11:12:47.444365"]]
+  ↳ app/controllers/members_controller.rb:11:in `new'
+  [1m[35m (68.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/members_controller.rb:11:in `new'
+Redirected to http://localhost:3000/members
+Completed 302 Found in 88ms (ActiveRecord: 69.9ms | Allocations: 6164)
+
+
+Started GET "/members" for ::1 at 2020-11-30 13:12:47 +0200
+Processing by MembersController#index as HTML
+  Rendering members/index.html.erb within layouts/application
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT "members".* FROM "members" ORDER BY current_rank[0m
+  ↳ app/views/members/index.html.erb:13
+  Rendered members/index.html.erb within layouts/application (Duration: 1.5ms | Allocations: 694)
+  Rendered elements/_nav.html.erb (Duration: 0.0ms | Allocations: 6)
+Completed 200 OK in 5ms (Views: 4.1ms | ActiveRecord: 0.2ms | Allocations: 2670)
+
+
+Started GET "/members/new" for ::1 at 2020-11-30 13:12:48 +0200
+Processing by MembersController#new as HTML
+  Rendering members/new.html.erb within layouts/application
+  Rendered members/new.html.erb within layouts/application (Duration: 3.4ms | Allocations: 754)
+  Rendered elements/_nav.html.erb (Duration: 0.1ms | Allocations: 6)
+Completed 200 OK in 11ms (Views: 8.0ms | ActiveRecord: 0.0ms | Allocations: 2711)
+
+
+Started POST "/members/new" for ::1 at 2020-11-30 13:12:54 +0200
+Processing by MembersController#new as HTML
+  Parameters: {"authenticity_token"=>"Wu8h2vzysUG9GiXdLkPIjA6YtR3dC672JKdcSw6yWj1/L283bOPazYW6dI2xea5AKIXZ4JYVydpYrB9XLwz5iw==", "member"=>{"name"=>"C", "email"=>"C", "dob"=>"2020-11-20"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/members_controller.rb:11:in `new'
+  [1m[36mMember Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "members" WHERE LOWER("members"."email") = LOWER(?) LIMIT ?[0m  [["email", "C"], ["LIMIT", 1]]
+  ↳ app/controllers/members_controller.rb:11:in `new'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "members"[0m
+  ↳ app/models/member.rb:13:in `set_rank'
+  [1m[36mMember Create (0.8ms)[0m  [1m[32mINSERT INTO "members" ("name", "email", "dob", "current_rank", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "C"], ["email", "C"], ["dob", "2020-11-20"], ["current_rank", 3], ["created_at", "2020-11-30 11:12:54.586160"], ["updated_at", "2020-11-30 11:12:54.586160"]]
+  ↳ app/controllers/members_controller.rb:11:in `new'
+  [1m[35m (725.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/members_controller.rb:11:in `new'
+Redirected to http://localhost:3000/members
+Completed 302 Found in 752ms (ActiveRecord: 726.8ms | Allocations: 7103)
+
+
+Started GET "/members" for ::1 at 2020-11-30 13:12:55 +0200
+Processing by MembersController#index as HTML
+  Rendering members/index.html.erb within layouts/application
+  [1m[36mMember Load (0.5ms)[0m  [1m[34mSELECT "members".* FROM "members" ORDER BY current_rank[0m
+  ↳ app/views/members/index.html.erb:13
+  Rendered members/index.html.erb within layouts/application (Duration: 3.2ms | Allocations: 734)
+  Rendered elements/_nav.html.erb (Duration: 0.1ms | Allocations: 6)
+Completed 200 OK in 11ms (Views: 8.4ms | ActiveRecord: 0.5ms | Allocations: 2702)
+
+
+Started GET "/matches" for ::1 at 2020-11-30 13:12:57 +0200
+Processing by MatchesController#index as HTML
+  Rendering matches/index.html.erb within layouts/application
+  [1m[36mMatch Load (0.5ms)[0m  [1m[34mSELECT "matches".* FROM "matches" ORDER BY created_at[0m
+  ↳ app/views/matches/index.html.erb:12
+  Rendered matches/index.html.erb within layouts/application (Duration: 2.7ms | Allocations: 617)
+  Rendered elements/_nav.html.erb (Duration: 0.1ms | Allocations: 6)
+Completed 200 OK in 10ms (Views: 7.8ms | ActiveRecord: 0.5ms | Allocations: 2592)
+
+
+Started GET "/members" for ::1 at 2020-11-30 13:13:03 +0200
+Processing by MembersController#index as HTML
+  Rendering members/index.html.erb within layouts/application
+  [1m[36mMember Load (0.4ms)[0m  [1m[34mSELECT "members".* FROM "members" ORDER BY current_rank[0m
+  ↳ app/views/members/index.html.erb:13
+  Rendered members/index.html.erb within layouts/application (Duration: 3.1ms | Allocations: 734)
+  Rendered elements/_nav.html.erb (Duration: 0.0ms | Allocations: 6)
+Completed 200 OK in 16ms (Views: 13.3ms | ActiveRecord: 0.4ms | Allocations: 2714)
+
+
+Started GET "/matches" for ::1 at 2020-11-30 13:14:50 +0200
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by MatchesController#index as HTML
+  Rendering matches/index.html.erb within layouts/application
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" ORDER BY created_at[0m
+  ↳ app/views/matches/index.html.erb:12
+  Rendered matches/index.html.erb within layouts/application (Duration: 1.3ms | Allocations: 1215)
+  Rendered elements/_nav.html.erb (Duration: 0.0ms | Allocations: 6)
+Completed 200 OK in 6ms (Views: 2.8ms | ActiveRecord: 0.4ms | Allocations: 4586)
+
+
+Started GET "/matches/new" for ::1 at 2020-11-30 13:14:51 +0200
+Processing by MatchesController#new as HTML
+  Rendering matches/new.html.erb within layouts/application
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT "members".* FROM "members"[0m
+  ↳ app/views/matches/new.html.erb:17:in `collect'
+  Rendered matches/new.html.erb within layouts/application (Duration: 34.3ms | Allocations: 6756)
+  Rendered elements/_nav.html.erb (Duration: 0.0ms | Allocations: 6)
+Completed 200 OK in 65ms (Views: 35.3ms | ActiveRecord: 1.5ms | Allocations: 14969)
+
+
+Started POST "/matches/new" for ::1 at 2020-11-30 13:15:01 +0200
+Processing by MatchesController#new as HTML
+  Parameters: {"authenticity_token"=>"Pn6eAY+5IlAq8kb8Fo9KR1GalxZ0Mce27ej812cAnb2TsYlxMcu7KHVGxKWhPT4AQQFcmGzQiKw/8lWUbcNmMg==", "match"=>{"user_id"=>"44", "match_status"=>"challenger_won", "challenger_id"=>"45"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/matches_controller.rb:13:in `new'
+  [1m[36mMember Load (0.4ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 44], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:13:in `new'
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 45], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:13:in `new'
+  [1m[36mMatch Create (0.7ms)[0m  [1m[32mINSERT INTO "matches" ("user_id", "user_rank", "challenger_id", "challenger_rank", "created_at", "updated_at", "match_status") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["user_id", 44], ["user_rank", 2], ["challenger_id", 45], ["challenger_rank", 3], ["created_at", "2020-11-30 11:15:02.013539"], ["updated_at", "2020-11-30 11:15:02.013539"], ["match_status", "challenger_won"]]
+  ↳ app/controllers/matches_controller.rb:13:in `new'
+  [1m[36mMember Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "members" WHERE LOWER("members"."email") = LOWER(?) AND "members"."id" != ? LIMIT ?[0m  [["email", "B"], ["id", 44], ["LIMIT", 1]]
+  ↳ app/models/match.rb:26:in `update_match_count'
+  [1m[36mMember Update (0.3ms)[0m  [1m[33mUPDATE "members" SET "num_games" = ?, "updated_at" = ? WHERE "members"."id" = ?[0m  [["num_games", 1], ["updated_at", "2020-11-30 11:15:02.023690"], ["id", 44]]
+  ↳ app/models/match.rb:26:in `update_match_count'
+  [1m[36mMember Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "members" WHERE LOWER("members"."email") = LOWER(?) AND "members"."id" != ? LIMIT ?[0m  [["email", "C"], ["id", 45], ["LIMIT", 1]]
+  ↳ app/models/match.rb:27:in `update_match_count'
+  [1m[36mMember Update (0.1ms)[0m  [1m[33mUPDATE "members" SET "num_games" = ?, "updated_at" = ? WHERE "members"."id" = ?[0m  [["num_games", 1], ["updated_at", "2020-11-30 11:15:02.029189"], ["id", 45]]
+  ↳ app/models/match.rb:27:in `update_match_count'
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 45], ["LIMIT", 1]]
+  ↳ app/models/match.rb:85:in `update_won'
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 44], ["LIMIT", 1]]
+  ↳ app/models/match.rb:86:in `update_won'
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."current_rank" = ? ORDER BY "members"."id" ASC LIMIT ?[0m  [["current_rank", 3], ["LIMIT", 1]]
+  ↳ app/models/match.rb:89:in `update_won'
+  [1m[36mMember Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "members" WHERE LOWER("members"."email") = LOWER(?) AND "members"."id" != ? LIMIT ?[0m  [["email", "C"], ["id", 45], ["LIMIT", 1]]
+  ↳ app/models/match.rb:90:in `update_won'
+  [1m[36mMember Update (0.1ms)[0m  [1m[33mUPDATE "members" SET "current_rank" = ?, "updated_at" = ? WHERE "members"."id" = ?[0m  [["current_rank", 2], ["updated_at", "2020-11-30 11:15:02.036754"], ["id", 45]]
+  ↳ app/models/match.rb:90:in `update_won'
+  [1m[36mMember Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "members" WHERE LOWER("members"."email") = LOWER(?) AND "members"."id" != ? LIMIT ?[0m  [["email", "B"], ["id", 44], ["LIMIT", 1]]
+  ↳ app/models/match.rb:91:in `update_won'
+  [1m[36mMember Update (0.1ms)[0m  [1m[33mUPDATE "members" SET "current_rank" = ?, "updated_at" = ? WHERE "members"."id" = ?[0m  [["current_rank", 3], ["updated_at", "2020-11-30 11:15:02.039525"], ["id", 44]]
+  ↳ app/models/match.rb:91:in `update_won'
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE (current_rank >= 1 AND current_rank < 3)[0m
+  ↳ app/models/match.rb:98:in `update_won'
+  [1m[36mMember Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "members" WHERE LOWER("members"."email") = LOWER(?) AND "members"."id" != ? LIMIT ?[0m  [["email", "A"], ["id", 43], ["LIMIT", 1]]
+  ↳ app/models/match.rb:99:in `block in update_won'
+  [1m[36mMember Update (0.1ms)[0m  [1m[33mUPDATE "members" SET "current_rank" = ?, "updated_at" = ? WHERE "members"."id" = ?[0m  [["current_rank", 2], ["updated_at", "2020-11-30 11:15:02.043036"], ["id", 43]]
+  ↳ app/models/match.rb:99:in `block in update_won'
+  [1m[36mMember Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "members" WHERE LOWER("members"."email") = LOWER(?) AND "members"."id" != ? LIMIT ?[0m  [["email", "C"], ["id", 45], ["LIMIT", 1]]
+  ↳ app/models/match.rb:99:in `block in update_won'
+  [1m[36mMember Update (0.1ms)[0m  [1m[33mUPDATE "members" SET "current_rank" = ?, "updated_at" = ? WHERE "members"."id" = ?[0m  [["current_rank", 3], ["updated_at", "2020-11-30 11:15:02.045949"], ["id", 45]]
+  ↳ app/models/match.rb:99:in `block in update_won'
+  [1m[36mMember Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "members" WHERE LOWER("members"."email") = LOWER(?) AND "members"."id" != ? LIMIT ?[0m  [["email", "C"], ["id", 45], ["LIMIT", 1]]
+  ↳ app/models/match.rb:103:in `update_won'
+  [1m[36mMember Update (0.1ms)[0m  [1m[33mUPDATE "members" SET "current_rank" = ?, "updated_at" = ? WHERE "members"."id" = ?[0m  [["current_rank", 2], ["updated_at", "2020-11-30 11:15:02.048183"], ["id", 45]]
+  ↳ app/models/match.rb:103:in `update_won'
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/match.rb:65:in `update_rank'
+  [1m[36mMember Load (0.0ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 44], ["LIMIT", 1]]
+  ↳ app/models/match.rb:66:in `update_rank'
+  [1m[36mMember Load (0.0ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 45], ["LIMIT", 1]]
+  ↳ app/models/match.rb:66:in `update_rank'
+  [1m[36mMatch Update (0.1ms)[0m  [1m[33mUPDATE "matches" SET "user_rank_new" = ?, "challenger_rank_new" = ?, "updated_at" = ? WHERE "matches"."id" = ?[0m  [["user_rank_new", 3], ["challenger_rank_new", 2], ["updated_at", "2020-11-30 11:15:02.051875"], ["id", 1]]
+  ↳ app/models/match.rb:66:in `update_rank'
+  [1m[35m (472.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/matches_controller.rb:13:in `new'
+Redirected to http://localhost:3000/matches
+Completed 302 Found in 532ms (ActiveRecord: 476.7ms | Allocations: 29834)
+
+
+Started GET "/matches" for ::1 at 2020-11-30 13:15:02 +0200
+Processing by MatchesController#index as HTML
+  Rendering matches/index.html.erb within layouts/application
+  [1m[36mMatch Load (0.6ms)[0m  [1m[34mSELECT "matches".* FROM "matches" ORDER BY created_at[0m
+  ↳ app/views/matches/index.html.erb:12
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 44], ["LIMIT", 1]]
+  ↳ app/views/matches/index.html.erb:17
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 45], ["LIMIT", 1]]
+  ↳ app/views/matches/index.html.erb:22
+  Rendered matches/index.html.erb within layouts/application (Duration: 9.1ms | Allocations: 2134)
+  Rendered elements/_nav.html.erb (Duration: 0.0ms | Allocations: 6)
+Completed 200 OK in 16ms (Views: 12.4ms | ActiveRecord: 1.0ms | Allocations: 4114)
+
+
+Started GET "/members" for ::1 at 2020-11-30 13:15:04 +0200
+Processing by MembersController#index as HTML
+  Rendering members/index.html.erb within layouts/application
+  [1m[36mMember Load (0.5ms)[0m  [1m[34mSELECT "members".* FROM "members" ORDER BY current_rank[0m
+  ↳ app/views/members/index.html.erb:13
+  Rendered members/index.html.erb within layouts/application (Duration: 3.5ms | Allocations: 733)
+  Rendered elements/_nav.html.erb (Duration: 0.1ms | Allocations: 6)
+Completed 200 OK in 12ms (Views: 9.5ms | ActiveRecord: 0.5ms | Allocations: 2870)
+
+
+Started GET "/members/delete/44" for ::1 at 2020-11-30 13:15:59 +0200
+Processing by MembersController#delete as HTML
+  Parameters: {"id"=>"44"}
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 44], ["LIMIT", 1]]
+  ↳ app/controllers/members_controller.rb:21:in `delete'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/members_controller.rb:22:in `delete'
+  [1m[36mMember Destroy (0.5ms)[0m  [1m[31mDELETE FROM "members" WHERE "members"."id" = ?[0m  [["id", 44]]
+  ↳ app/controllers/members_controller.rb:22:in `delete'
+  [1m[35m (1343.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/members_controller.rb:22:in `delete'
+Redirected to http://localhost:3000/members
+Completed 302 Found in 1360ms (ActiveRecord: 1344.1ms | Allocations: 5048)
+
+
+Started GET "/members" for ::1 at 2020-11-30 13:16:01 +0200
+Processing by MembersController#index as HTML
+  Rendering members/index.html.erb within layouts/application
+  [1m[36mMember Load (0.4ms)[0m  [1m[34mSELECT "members".* FROM "members" ORDER BY current_rank[0m
+  ↳ app/views/members/index.html.erb:13
+  Rendered members/index.html.erb within layouts/application (Duration: 3.0ms | Allocations: 693)
+  Rendered elements/_nav.html.erb (Duration: 0.1ms | Allocations: 6)
+Completed 200 OK in 10ms (Views: 7.9ms | ActiveRecord: 0.4ms | Allocations: 2666)
+
+
+Started GET "/members/delete/45" for ::1 at 2020-11-30 13:16:01 +0200
+Processing by MembersController#delete as HTML
+  Parameters: {"id"=>"45"}
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 45], ["LIMIT", 1]]
+  ↳ app/controllers/members_controller.rb:21:in `delete'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/members_controller.rb:22:in `delete'
+  [1m[36mMember Destroy (0.4ms)[0m  [1m[31mDELETE FROM "members" WHERE "members"."id" = ?[0m  [["id", 45]]
+  ↳ app/controllers/members_controller.rb:22:in `delete'
+  [1m[35m (1343.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/members_controller.rb:22:in `delete'
+Redirected to http://localhost:3000/members
+Completed 302 Found in 1355ms (ActiveRecord: 1343.9ms | Allocations: 5236)
+
+
+Started GET "/members" for ::1 at 2020-11-30 13:16:03 +0200
+Processing by MembersController#index as HTML
+  Rendering members/index.html.erb within layouts/application
+  [1m[36mMember Load (0.6ms)[0m  [1m[34mSELECT "members".* FROM "members" ORDER BY current_rank[0m
+  ↳ app/views/members/index.html.erb:13
+  Rendered members/index.html.erb within layouts/application (Duration: 3.4ms | Allocations: 654)
+  Rendered elements/_nav.html.erb (Duration: 0.1ms | Allocations: 6)
+Completed 200 OK in 12ms (Views: 8.9ms | ActiveRecord: 0.6ms | Allocations: 2622)
+
+
+Started GET "/members/delete/43" for ::1 at 2020-11-30 13:16:03 +0200
+Processing by MembersController#delete as HTML
+  Parameters: {"id"=>"43"}
+  [1m[36mMember Load (0.3ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 43], ["LIMIT", 1]]
+  ↳ app/controllers/members_controller.rb:21:in `delete'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/members_controller.rb:22:in `delete'
+  [1m[36mMember Destroy (0.6ms)[0m  [1m[31mDELETE FROM "members" WHERE "members"."id" = ?[0m  [["id", 43]]
+  ↳ app/controllers/members_controller.rb:22:in `delete'
+  [1m[35m (459.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/members_controller.rb:22:in `delete'
+Redirected to http://localhost:3000/members
+Completed 302 Found in 472ms (ActiveRecord: 460.3ms | Allocations: 5242)
+
+
+Started GET "/members" for ::1 at 2020-11-30 13:16:04 +0200
+Processing by MembersController#index as HTML
+  Rendering members/index.html.erb within layouts/application
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT "members".* FROM "members" ORDER BY current_rank[0m
+  ↳ app/views/members/index.html.erb:13
+  Rendered members/index.html.erb within layouts/application (Duration: 1.0ms | Allocations: 613)
+  Rendered elements/_nav.html.erb (Duration: 0.0ms | Allocations: 6)
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.2ms | Allocations: 2599)
+
+
+Started GET "/matches" for ::1 at 2020-11-30 13:17:33 +0200
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by MatchesController#index as HTML
+  Rendering matches/index.html.erb within layouts/application
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" ORDER BY created_at[0m
+  ↳ app/views/matches/index.html.erb:12
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 44], ["LIMIT", 1]]
+  ↳ app/views/matches/index.html.erb:17
+  Rendered matches/index.html.erb within layouts/application (Duration: 13.7ms | Allocations: 10844)
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 1.1ms | Allocations: 12912)
+
+
+  
+ActionView::Template::Error (undefined method `name' for nil:NilClass):
+    14:         <tr>
+    15:             <td><%= i.created_at %></td>
+    16:             <td>
+    17:               <%= i.user.name %><br/>
+    18:               <%= i.user.email %>
+    19:             </td>
+    20:             <td><%= @status_options[i.match_status] %></td>
+  
+app/views/matches/index.html.erb:17
+app/views/matches/index.html.erb:13
+Started GET "/matches" for ::1 at 2020-11-30 13:18:36 +0200
+Processing by MatchesController#index as HTML
+  Rendering matches/index.html.erb within layouts/application
+  [1m[36mMatch Load (0.5ms)[0m  [1m[34mSELECT "matches".* FROM "matches" ORDER BY created_at[0m
+  ↳ app/views/matches/index.html.erb:12
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 44], ["LIMIT", 1]]
+  ↳ app/views/matches/index.html.erb:17
+  [1m[36mMember Load (0.3ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 45], ["LIMIT", 1]]
+  ↳ app/views/matches/index.html.erb:22
+  Rendered matches/index.html.erb within layouts/application (Duration: 14.3ms | Allocations: 4058)
+  Rendered elements/_nav.html.erb (Duration: 0.5ms | Allocations: 78)
+Completed 200 OK in 26ms (Views: 21.8ms | ActiveRecord: 1.1ms | Allocations: 7215)
+
+
+Started GET "/matches/delete/1" for ::1 at 2020-11-30 13:18:39 +0200
+Processing by MatchesController#delete as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMatch Load (0.4ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:25:in `delete'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/matches_controller.rb:26:in `delete'
+  [1m[36mMatch Destroy (0.6ms)[0m  [1m[31mDELETE FROM "matches" WHERE "matches"."id" = ?[0m  [["id", 1]]
+  ↳ app/controllers/matches_controller.rb:26:in `delete'
+  [1m[35m (72.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/matches_controller.rb:26:in `delete'
+Redirected to http://localhost:3000/matches
+Completed 302 Found in 89ms (ActiveRecord: 73.7ms | Allocations: 5362)
+
+
+Started GET "/matches" for ::1 at 2020-11-30 13:18:40 +0200
+Processing by MatchesController#index as HTML
+  Rendering matches/index.html.erb within layouts/application
+  [1m[36mMatch Load (0.2ms)[0m  [1m[34mSELECT "matches".* FROM "matches" ORDER BY created_at[0m
+  ↳ app/views/matches/index.html.erb:12
+  Rendered matches/index.html.erb within layouts/application (Duration: 1.2ms | Allocations: 617)
+  Rendered elements/_nav.html.erb (Duration: 0.0ms | Allocations: 6)
+Completed 200 OK in 5ms (Views: 4.0ms | ActiveRecord: 0.2ms | Allocations: 2596)
+
+
+Started GET "/members" for ::1 at 2020-11-30 13:18:42 +0200
+Processing by MembersController#index as HTML
+  Rendering members/index.html.erb within layouts/application
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT "members".* FROM "members" ORDER BY current_rank[0m
+  ↳ app/views/members/index.html.erb:13
+  Rendered members/index.html.erb within layouts/application (Duration: 1.7ms | Allocations: 876)
+  Rendered elements/_nav.html.erb (Duration: 0.1ms | Allocations: 6)
+Completed 200 OK in 7ms (Views: 5.0ms | ActiveRecord: 0.2ms | Allocations: 3430)
+
+
+Started GET "/members/new" for ::1 at 2020-11-30 13:18:43 +0200
+Processing by MembersController#new as HTML
+  Rendering members/new.html.erb within layouts/application
+  Rendered members/new.html.erb within layouts/application (Duration: 4.0ms | Allocations: 1197)
+  Rendered elements/_nav.html.erb (Duration: 0.0ms | Allocations: 6)
+Completed 200 OK in 28ms (Views: 7.4ms | ActiveRecord: 0.0ms | Allocations: 7057)
+
+
+Started POST "/members/new" for ::1 at 2020-11-30 13:18:49 +0200
+Processing by MembersController#new as HTML
+  Parameters: {"authenticity_token"=>"eqmztGnaDckZSnmcf5dj5HQeGSdES5108PjADlfvS61faf1Z+ctmRSHqKMzgrQUoUgN12g9V+liM84MSdlHoGw==", "member"=>{"name"=>"A", "email"=>"A", "dob"=>"2020-11-04"}}
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/members_controller.rb:11:in `new'
+  [1m[36mMember Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "members" WHERE LOWER("members"."email") = LOWER(?) LIMIT ?[0m  [["email", "A"], ["LIMIT", 1]]
+  ↳ app/controllers/members_controller.rb:11:in `new'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "members"[0m
+  ↳ app/models/member.rb:13:in `set_rank'
+  [1m[36mMember Create (0.4ms)[0m  [1m[32mINSERT INTO "members" ("name", "email", "dob", "current_rank", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "A"], ["email", "A"], ["dob", "2020-11-04"], ["current_rank", 1], ["created_at", "2020-11-30 11:18:49.658029"], ["updated_at", "2020-11-30 11:18:49.658029"]]
+  ↳ app/controllers/members_controller.rb:11:in `new'
+  [1m[35m (68.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/members_controller.rb:11:in `new'
+Redirected to http://localhost:3000/members
+Completed 302 Found in 86ms (ActiveRecord: 69.0ms | Allocations: 6346)
+
+
+Started GET "/members" for ::1 at 2020-11-30 13:18:49 +0200
+Processing by MembersController#index as HTML
+  Rendering members/index.html.erb within layouts/application
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT "members".* FROM "members" ORDER BY current_rank[0m
+  ↳ app/views/members/index.html.erb:13
+  Rendered members/index.html.erb within layouts/application (Duration: 6.2ms | Allocations: 664)
+  Rendered elements/_nav.html.erb (Duration: 0.0ms | Allocations: 6)
+Completed 200 OK in 10ms (Views: 8.8ms | ActiveRecord: 0.2ms | Allocations: 2653)
+
+
+Started GET "/members/new" for ::1 at 2020-11-30 13:18:50 +0200
+Processing by MembersController#new as HTML
+  Rendering members/new.html.erb within layouts/application
+  Rendered members/new.html.erb within layouts/application (Duration: 4.6ms | Allocations: 754)
+  Rendered elements/_nav.html.erb (Duration: 0.1ms | Allocations: 6)
+Completed 200 OK in 11ms (Views: 9.2ms | ActiveRecord: 0.0ms | Allocations: 2699)
+
+
+Started POST "/members/new" for ::1 at 2020-11-30 13:18:57 +0200
+Processing by MembersController#new as HTML
+  Parameters: {"authenticity_token"=>"x6hJzQDrOuK3pYzJpoZkSfWWJLwibmo8wQEvi7UheWTiaAcgkPpRbo8F3Zk5vAKF04tIQWlwDRC9CmyXlJ/a0g==", "member"=>{"name"=>"B", "email"=>"B", "dob"=>"2020-11-12"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/members_controller.rb:11:in `new'
+  [1m[36mMember Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "members" WHERE LOWER("members"."email") = LOWER(?) LIMIT ?[0m  [["email", "B"], ["LIMIT", 1]]
+  ↳ app/controllers/members_controller.rb:11:in `new'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "members"[0m
+  ↳ app/models/member.rb:13:in `set_rank'
+  [1m[36mMember Create (0.4ms)[0m  [1m[32mINSERT INTO "members" ("name", "email", "dob", "current_rank", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "B"], ["email", "B"], ["dob", "2020-11-12"], ["current_rank", 2], ["created_at", "2020-11-30 11:18:57.379001"], ["updated_at", "2020-11-30 11:18:57.379001"]]
+  ↳ app/controllers/members_controller.rb:11:in `new'
+  [1m[35m (69.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/members_controller.rb:11:in `new'
+Redirected to http://localhost:3000/members
+Completed 302 Found in 85ms (ActiveRecord: 70.9ms | Allocations: 6727)
+
+
+Started GET "/members" for ::1 at 2020-11-30 13:18:57 +0200
+Processing by MembersController#index as HTML
+  Rendering members/index.html.erb within layouts/application
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT "members".* FROM "members" ORDER BY current_rank[0m
+  ↳ app/views/members/index.html.erb:13
+  Rendered members/index.html.erb within layouts/application (Duration: 1.9ms | Allocations: 694)
+  Rendered elements/_nav.html.erb (Duration: 0.1ms | Allocations: 6)
+Completed 200 OK in 7ms (Views: 5.5ms | ActiveRecord: 0.2ms | Allocations: 2686)
+
+
+Started GET "/members/new" for ::1 at 2020-11-30 13:18:58 +0200
+Processing by MembersController#new as HTML
+  Rendering members/new.html.erb within layouts/application
+  Rendered members/new.html.erb within layouts/application (Duration: 3.8ms | Allocations: 754)
+  Rendered elements/_nav.html.erb (Duration: 0.1ms | Allocations: 6)
+Completed 200 OK in 12ms (Views: 9.5ms | ActiveRecord: 0.0ms | Allocations: 2699)
+
+
+Started POST "/members/new" for ::1 at 2020-11-30 13:19:05 +0200
+Processing by MembersController#new as HTML
+  Parameters: {"authenticity_token"=>"rh+Tq5I2saAG+1EiWcjIf9/ZMQuYuLOCd0vLHHVmCuWL391GAifaLD5bAHLG8q6z+cRd9tOm1K4LQIgAVNipUw==", "member"=>{"name"=>"C", "email"=>"C", "dob"=>"2020-11-26"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/members_controller.rb:11:in `new'
+  [1m[36mMember Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "members" WHERE LOWER("members"."email") = LOWER(?) LIMIT ?[0m  [["email", "C"], ["LIMIT", 1]]
+  ↳ app/controllers/members_controller.rb:11:in `new'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "members"[0m
+  ↳ app/models/member.rb:13:in `set_rank'
+  [1m[36mMember Create (0.3ms)[0m  [1m[32mINSERT INTO "members" ("name", "email", "dob", "current_rank", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "C"], ["email", "C"], ["dob", "2020-11-26"], ["current_rank", 3], ["created_at", "2020-11-30 11:19:05.769497"], ["updated_at", "2020-11-30 11:19:05.769497"]]
+  ↳ app/controllers/members_controller.rb:11:in `new'
+  [1m[35m (440.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/members_controller.rb:11:in `new'
+Redirected to http://localhost:3000/members
+Completed 302 Found in 456ms (ActiveRecord: 440.9ms | Allocations: 6747)
+
+
+Started GET "/members" for ::1 at 2020-11-30 13:19:06 +0200
+Processing by MembersController#index as HTML
+  Rendering members/index.html.erb within layouts/application
+  [1m[36mMember Load (0.4ms)[0m  [1m[34mSELECT "members".* FROM "members" ORDER BY current_rank[0m
+  ↳ app/views/members/index.html.erb:13
+  Rendered members/index.html.erb within layouts/application (Duration: 3.1ms | Allocations: 734)
+  Rendered elements/_nav.html.erb (Duration: 0.1ms | Allocations: 6)
+Completed 200 OK in 9ms (Views: 7.0ms | ActiveRecord: 0.4ms | Allocations: 2712)
+
+
+Started GET "/matches" for ::1 at 2020-11-30 13:19:19 +0200
+Processing by MatchesController#index as HTML
+  Rendering matches/index.html.erb within layouts/application
+  [1m[36mMatch Load (0.5ms)[0m  [1m[34mSELECT "matches".* FROM "matches" ORDER BY created_at[0m
+  ↳ app/views/matches/index.html.erb:12
+  Rendered matches/index.html.erb within layouts/application (Duration: 3.4ms | Allocations: 617)
+  Rendered elements/_nav.html.erb (Duration: 0.1ms | Allocations: 6)
+Completed 200 OK in 12ms (Views: 9.3ms | ActiveRecord: 0.5ms | Allocations: 2602)
+
+
+Started GET "/matches/new" for ::1 at 2020-11-30 13:19:20 +0200
+Processing by MatchesController#new as HTML
+  Rendering matches/new.html.erb within layouts/application
+  [1m[36mMember Load (0.3ms)[0m  [1m[34mSELECT "members".* FROM "members"[0m
+  ↳ app/views/matches/new.html.erb:17:in `collect'
+  Rendered matches/new.html.erb within layouts/application (Duration: 8.4ms | Allocations: 1992)
+  Rendered elements/_nav.html.erb (Duration: 0.1ms | Allocations: 6)
+Completed 200 OK in 15ms (Views: 11.6ms | ActiveRecord: 0.3ms | Allocations: 4098)
+
+
+Started POST "/matches/new" for ::1 at 2020-11-30 13:19:30 +0200
+Processing by MatchesController#new as HTML
+  Parameters: {"authenticity_token"=>"vtBo1yeD8RXzqdVeQP3sebZunnAOTmpTE9H426GsN9UTH3+nmfFobawdVwf3T5g+pvVV/havJUnBy1GYq2/MWg==", "match"=>{"user_id"=>"47", "match_status"=>"challenger_won", "challenger_id"=>"48"}}
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/matches_controller.rb:13:in `new'
+  [1m[36mMember Load (0.4ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 47], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:13:in `new'
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 48], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:13:in `new'
+  [1m[36mMatch Create (0.4ms)[0m  [1m[32mINSERT INTO "matches" ("user_id", "user_rank", "challenger_id", "challenger_rank", "created_at", "updated_at", "match_status") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["user_id", 47], ["user_rank", 2], ["challenger_id", 48], ["challenger_rank", 3], ["created_at", "2020-11-30 11:19:30.530285"], ["updated_at", "2020-11-30 11:19:30.530285"], ["match_status", "challenger_won"]]
+  ↳ app/controllers/matches_controller.rb:13:in `new'
+  [1m[36mMember Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "members" WHERE LOWER("members"."email") = LOWER(?) AND "members"."id" != ? LIMIT ?[0m  [["email", "B"], ["id", 47], ["LIMIT", 1]]
+  ↳ app/models/match.rb:26:in `update_match_count'
+  [1m[36mMember Update (0.2ms)[0m  [1m[33mUPDATE "members" SET "num_games" = ?, "updated_at" = ? WHERE "members"."id" = ?[0m  [["num_games", 1], ["updated_at", "2020-11-30 11:19:30.537576"], ["id", 47]]
+  ↳ app/models/match.rb:26:in `update_match_count'
+  [1m[36mMember Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "members" WHERE LOWER("members"."email") = LOWER(?) AND "members"."id" != ? LIMIT ?[0m  [["email", "C"], ["id", 48], ["LIMIT", 1]]
+  ↳ app/models/match.rb:27:in `update_match_count'
+  [1m[36mMember Update (0.1ms)[0m  [1m[33mUPDATE "members" SET "num_games" = ?, "updated_at" = ? WHERE "members"."id" = ?[0m  [["num_games", 1], ["updated_at", "2020-11-30 11:19:30.542139"], ["id", 48]]
+  ↳ app/models/match.rb:27:in `update_match_count'
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 48], ["LIMIT", 1]]
+  ↳ app/models/match.rb:85:in `update_won'
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 47], ["LIMIT", 1]]
+  ↳ app/models/match.rb:86:in `update_won'
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."current_rank" = ? ORDER BY "members"."id" ASC LIMIT ?[0m  [["current_rank", 3], ["LIMIT", 1]]
+  ↳ app/models/match.rb:89:in `update_won'
+  [1m[36mMember Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "members" WHERE LOWER("members"."email") = LOWER(?) AND "members"."id" != ? LIMIT ?[0m  [["email", "C"], ["id", 48], ["LIMIT", 1]]
+  ↳ app/models/match.rb:90:in `update_won'
+  [1m[36mMember Update (0.1ms)[0m  [1m[33mUPDATE "members" SET "current_rank" = ?, "updated_at" = ? WHERE "members"."id" = ?[0m  [["current_rank", 2], ["updated_at", "2020-11-30 11:19:30.548201"], ["id", 48]]
+  ↳ app/models/match.rb:90:in `update_won'
+  [1m[36mMember Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "members" WHERE LOWER("members"."email") = LOWER(?) AND "members"."id" != ? LIMIT ?[0m  [["email", "B"], ["id", 47], ["LIMIT", 1]]
+  ↳ app/models/match.rb:91:in `update_won'
+  [1m[36mMember Update (0.1ms)[0m  [1m[33mUPDATE "members" SET "current_rank" = ?, "updated_at" = ? WHERE "members"."id" = ?[0m  [["current_rank", 3], ["updated_at", "2020-11-30 11:19:30.550533"], ["id", 47]]
+  ↳ app/models/match.rb:91:in `update_won'
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE (current_rank >= 1 AND current_rank < 3)[0m
+  ↳ app/models/match.rb:98:in `update_won'
+  [1m[36mMember Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "members" WHERE LOWER("members"."email") = LOWER(?) AND "members"."id" != ? LIMIT ?[0m  [["email", "A"], ["id", 46], ["LIMIT", 1]]
+  ↳ app/models/match.rb:99:in `block in update_won'
+  [1m[36mMember Update (0.1ms)[0m  [1m[33mUPDATE "members" SET "current_rank" = ?, "updated_at" = ? WHERE "members"."id" = ?[0m  [["current_rank", 2], ["updated_at", "2020-11-30 11:19:30.553375"], ["id", 46]]
+  ↳ app/models/match.rb:99:in `block in update_won'
+  [1m[36mMember Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "members" WHERE LOWER("members"."email") = LOWER(?) AND "members"."id" != ? LIMIT ?[0m  [["email", "C"], ["id", 48], ["LIMIT", 1]]
+  ↳ app/models/match.rb:99:in `block in update_won'
+  [1m[36mMember Update (0.1ms)[0m  [1m[33mUPDATE "members" SET "current_rank" = ?, "updated_at" = ? WHERE "members"."id" = ?[0m  [["current_rank", 3], ["updated_at", "2020-11-30 11:19:30.556367"], ["id", 48]]
+  ↳ app/models/match.rb:99:in `block in update_won'
+  [1m[36mMember Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "members" WHERE LOWER("members"."email") = LOWER(?) AND "members"."id" != ? LIMIT ?[0m  [["email", "C"], ["id", 48], ["LIMIT", 1]]
+  ↳ app/models/match.rb:103:in `update_won'
+  [1m[36mMember Update (0.1ms)[0m  [1m[33mUPDATE "members" SET "current_rank" = ?, "updated_at" = ? WHERE "members"."id" = ?[0m  [["current_rank", 1], ["updated_at", "2020-11-30 11:19:30.558519"], ["id", 48]]
+  ↳ app/models/match.rb:103:in `update_won'
+  [1m[36mMatch Load (0.0ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/match.rb:65:in `update_rank'
+  [1m[36mMember Load (0.0ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 47], ["LIMIT", 1]]
+  ↳ app/models/match.rb:66:in `update_rank'
+  [1m[36mMember Load (0.0ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 48], ["LIMIT", 1]]
+  ↳ app/models/match.rb:66:in `update_rank'
+  [1m[36mMatch Update (0.1ms)[0m  [1m[33mUPDATE "matches" SET "user_rank_new" = ?, "challenger_rank_new" = ?, "updated_at" = ? WHERE "matches"."id" = ?[0m  [["user_rank_new", 3], ["challenger_rank_new", 1], ["updated_at", "2020-11-30 11:19:30.561674"], ["id", 1]]
+  ↳ app/models/match.rb:66:in `update_rank'
+  [1m[35m (70.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/matches_controller.rb:13:in `new'
+Redirected to http://localhost:3000/matches
+Completed 302 Found in 128ms (ActiveRecord: 73.9ms | Allocations: 28430)
+
+
+Started GET "/matches" for ::1 at 2020-11-30 13:19:30 +0200
+Processing by MatchesController#index as HTML
+  Rendering matches/index.html.erb within layouts/application
+  [1m[36mMatch Load (0.3ms)[0m  [1m[34mSELECT "matches".* FROM "matches" ORDER BY created_at[0m
+  ↳ app/views/matches/index.html.erb:12
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 47], ["LIMIT", 1]]
+  ↳ app/views/matches/index.html.erb:17
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 48], ["LIMIT", 1]]
+  ↳ app/views/matches/index.html.erb:22
+  Rendered matches/index.html.erb within layouts/application (Duration: 6.3ms | Allocations: 2133)
+  Rendered elements/_nav.html.erb (Duration: 0.0ms | Allocations: 6)
+Completed 200 OK in 11ms (Views: 9.2ms | ActiveRecord: 0.6ms | Allocations: 4121)
+
+
+Started GET "/members" for ::1 at 2020-11-30 13:19:32 +0200
+Processing by MembersController#index as HTML
+  Rendering members/index.html.erb within layouts/application
+  [1m[36mMember Load (0.6ms)[0m  [1m[34mSELECT "members".* FROM "members" ORDER BY current_rank[0m
+  ↳ app/views/members/index.html.erb:13
+  Rendered members/index.html.erb within layouts/application (Duration: 5.4ms | Allocations: 732)
+  Rendered elements/_nav.html.erb (Duration: 0.1ms | Allocations: 6)
+Completed 200 OK in 16ms (Views: 12.1ms | ActiveRecord: 0.6ms | Allocations: 2692)
+
+
+Started GET "/members/new" for ::1 at 2020-11-30 13:19:38 +0200
+Processing by MembersController#new as HTML
+  Rendering members/new.html.erb within layouts/application
+  Rendered members/new.html.erb within layouts/application (Duration: 4.4ms | Allocations: 761)
+  Rendered elements/_nav.html.erb (Duration: 0.1ms | Allocations: 6)
+Completed 200 OK in 13ms (Views: 10.6ms | ActiveRecord: 0.0ms | Allocations: 2716)
+
+
+Started POST "/members/new" for ::1 at 2020-11-30 13:19:45 +0200
+Processing by MembersController#new as HTML
+  Parameters: {"authenticity_token"=>"5IHLXk4A3W1zh9ClLzE0s2ZrcaKDeuV1o6TLMfrHz/zBQYWz3hG24UsngfWwC1J/QHYdX8hkglnfr4gt23lsSg==", "member"=>{"name"=>"D", "email"=>"D", "dob"=>"2020-11-13"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/members_controller.rb:11:in `new'
+  [1m[36mMember Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "members" WHERE LOWER("members"."email") = LOWER(?) LIMIT ?[0m  [["email", "D"], ["LIMIT", 1]]
+  ↳ app/controllers/members_controller.rb:11:in `new'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "members"[0m
+  ↳ app/models/member.rb:13:in `set_rank'
+  [1m[36mMember Create (0.3ms)[0m  [1m[32mINSERT INTO "members" ("name", "email", "dob", "current_rank", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "D"], ["email", "D"], ["dob", "2020-11-13"], ["current_rank", 4], ["created_at", "2020-11-30 11:19:45.759160"], ["updated_at", "2020-11-30 11:19:45.759160"]]
+  ↳ app/controllers/members_controller.rb:11:in `new'
+  [1m[35m (77.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/members_controller.rb:11:in `new'
+Redirected to http://localhost:3000/members
+Completed 302 Found in 96ms (ActiveRecord: 78.1ms | Allocations: 6763)
+
+
+Started GET "/members" for ::1 at 2020-11-30 13:19:45 +0200
+Processing by MembersController#index as HTML
+  Rendering members/index.html.erb within layouts/application
+  [1m[36mMember Load (0.5ms)[0m  [1m[34mSELECT "members".* FROM "members" ORDER BY current_rank[0m
+  ↳ app/views/members/index.html.erb:13
+  Rendered members/index.html.erb within layouts/application (Duration: 3.5ms | Allocations: 773)
+  Rendered elements/_nav.html.erb (Duration: 0.1ms | Allocations: 6)
+Completed 200 OK in 11ms (Views: 7.9ms | ActiveRecord: 0.5ms | Allocations: 2741)
+
+
+Started GET "/matches" for ::1 at 2020-11-30 13:21:15 +0200
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by MatchesController#index as HTML
+  Rendering matches/index.html.erb within layouts/application
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" ORDER BY created_at[0m
+  ↳ app/views/matches/index.html.erb:12
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 47], ["LIMIT", 1]]
+  ↳ app/views/matches/index.html.erb:17
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 48], ["LIMIT", 1]]
+  ↳ app/views/matches/index.html.erb:22
+  Rendered matches/index.html.erb within layouts/application (Duration: 15.7ms | Allocations: 13986)
+  Rendered elements/_nav.html.erb (Duration: 0.0ms | Allocations: 6)
+Completed 200 OK in 20ms (Views: 16.6ms | ActiveRecord: 0.9ms | Allocations: 17389)
+
+
+Started GET "/matches/new" for ::1 at 2020-11-30 13:21:17 +0200
+Processing by MatchesController#new as HTML
+  Rendering matches/new.html.erb within layouts/application
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT "members".* FROM "members"[0m
+  ↳ app/views/matches/new.html.erb:17:in `collect'
+  Rendered matches/new.html.erb within layouts/application (Duration: 2.8ms | Allocations: 2009)
+  Rendered elements/_nav.html.erb (Duration: 0.0ms | Allocations: 6)
+Completed 200 OK in 6ms (Views: 4.6ms | ActiveRecord: 0.2ms | Allocations: 3978)
+
+
+Started GET "/members" for ::1 at 2020-11-30 13:21:23 +0200
+Processing by MembersController#index as HTML
+  Rendering members/index.html.erb within layouts/application
+  [1m[36mMember Load (0.4ms)[0m  [1m[34mSELECT "members".* FROM "members" ORDER BY current_rank[0m
+  ↳ app/views/members/index.html.erb:13
+  Rendered members/index.html.erb within layouts/application (Duration: 2.8ms | Allocations: 776)
+  Rendered elements/_nav.html.erb (Duration: 0.0ms | Allocations: 6)
+Completed 200 OK in 9ms (Views: 6.6ms | ActiveRecord: 0.4ms | Allocations: 2933)
+
+
+Started GET "/matches" for ::1 at 2020-11-30 13:21:31 +0200
+Processing by MatchesController#index as HTML
+  Rendering matches/index.html.erb within layouts/application
+  [1m[36mMatch Load (0.4ms)[0m  [1m[34mSELECT "matches".* FROM "matches" ORDER BY created_at[0m
+  ↳ app/views/matches/index.html.erb:12
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 47], ["LIMIT", 1]]
+  ↳ app/views/matches/index.html.erb:17
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 48], ["LIMIT", 1]]
+  ↳ app/views/matches/index.html.erb:22
+  Rendered matches/index.html.erb within layouts/application (Duration: 9.3ms | Allocations: 2133)
+  Rendered elements/_nav.html.erb (Duration: 0.0ms | Allocations: 6)
+Completed 200 OK in 16ms (Views: 12.7ms | ActiveRecord: 0.8ms | Allocations: 4125)
+
+
+Started GET "/matches/new" for ::1 at 2020-11-30 13:21:32 +0200
+Processing by MatchesController#new as HTML
+  Rendering matches/new.html.erb within layouts/application
+  [1m[36mMember Load (0.3ms)[0m  [1m[34mSELECT "members".* FROM "members"[0m
+  ↳ app/views/matches/new.html.erb:17:in `collect'
+  Rendered matches/new.html.erb within layouts/application (Duration: 8.3ms | Allocations: 1577)
+  Rendered elements/_nav.html.erb (Duration: 0.1ms | Allocations: 6)
+Completed 200 OK in 17ms (Views: 14.0ms | ActiveRecord: 0.3ms | Allocations: 3558)
+
+
+Started POST "/matches/new" for ::1 at 2020-11-30 13:21:41 +0200
+Processing by MatchesController#new as HTML
+  Parameters: {"authenticity_token"=>"PrGAjbriUZm/vU9uhYwkRBaatlUFe6M/3rVws0uhy7yTfpf9BJDI4eAJzTcyPlADBgF92x2a7CUMr9nwQWIwMw==", "match"=>{"user_id"=>"47", "match_status"=>"challenger_won", "challenger_id"=>"49"}}
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/matches_controller.rb:13:in `new'
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 47], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:13:in `new'
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 49], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:13:in `new'
+  [1m[36mMatch Create (0.4ms)[0m  [1m[32mINSERT INTO "matches" ("user_id", "user_rank", "challenger_id", "challenger_rank", "created_at", "updated_at", "match_status") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["user_id", 47], ["user_rank", 3], ["challenger_id", 49], ["challenger_rank", 4], ["created_at", "2020-11-30 11:21:41.591331"], ["updated_at", "2020-11-30 11:21:41.591331"], ["match_status", "challenger_won"]]
+  ↳ app/controllers/matches_controller.rb:13:in `new'
+  [1m[36mMember Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "members" WHERE LOWER("members"."email") = LOWER(?) AND "members"."id" != ? LIMIT ?[0m  [["email", "B"], ["id", 47], ["LIMIT", 1]]
+  ↳ app/models/match.rb:26:in `update_match_count'
+  [1m[36mMember Update (0.2ms)[0m  [1m[33mUPDATE "members" SET "num_games" = ?, "updated_at" = ? WHERE "members"."id" = ?[0m  [["num_games", 2], ["updated_at", "2020-11-30 11:21:41.598091"], ["id", 47]]
+  ↳ app/models/match.rb:26:in `update_match_count'
+  [1m[36mMember Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "members" WHERE LOWER("members"."email") = LOWER(?) AND "members"."id" != ? LIMIT ?[0m  [["email", "D"], ["id", 49], ["LIMIT", 1]]
+  ↳ app/models/match.rb:27:in `update_match_count'
+  [1m[36mMember Update (0.1ms)[0m  [1m[33mUPDATE "members" SET "num_games" = ?, "updated_at" = ? WHERE "members"."id" = ?[0m  [["num_games", 1], ["updated_at", "2020-11-30 11:21:41.602770"], ["id", 49]]
+  ↳ app/models/match.rb:27:in `update_match_count'
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 49], ["LIMIT", 1]]
+  ↳ app/models/match.rb:85:in `update_won'
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 47], ["LIMIT", 1]]
+  ↳ app/models/match.rb:86:in `update_won'
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."current_rank" = ? ORDER BY "members"."id" ASC LIMIT ?[0m  [["current_rank", 4], ["LIMIT", 1]]
+  ↳ app/models/match.rb:89:in `update_won'
+  [1m[36mMember Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "members" WHERE LOWER("members"."email") = LOWER(?) AND "members"."id" != ? LIMIT ?[0m  [["email", "D"], ["id", 49], ["LIMIT", 1]]
+  ↳ app/models/match.rb:90:in `update_won'
+  [1m[36mMember Update (0.1ms)[0m  [1m[33mUPDATE "members" SET "current_rank" = ?, "updated_at" = ? WHERE "members"."id" = ?[0m  [["current_rank", 3], ["updated_at", "2020-11-30 11:21:41.610830"], ["id", 49]]
+  ↳ app/models/match.rb:90:in `update_won'
+  [1m[36mMember Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "members" WHERE LOWER("members"."email") = LOWER(?) AND "members"."id" != ? LIMIT ?[0m  [["email", "B"], ["id", 47], ["LIMIT", 1]]
+  ↳ app/models/match.rb:91:in `update_won'
+  [1m[36mMember Update (0.1ms)[0m  [1m[33mUPDATE "members" SET "current_rank" = ?, "updated_at" = ? WHERE "members"."id" = ?[0m  [["current_rank", 4], ["updated_at", "2020-11-30 11:21:41.614112"], ["id", 47]]
+  ↳ app/models/match.rb:91:in `update_won'
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE (current_rank >= 3 AND current_rank < 4)[0m
+  ↳ app/models/match.rb:98:in `update_won'
+  [1m[36mMember Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "members" WHERE LOWER("members"."email") = LOWER(?) AND "members"."id" != ? LIMIT ?[0m  [["email", "D"], ["id", 49], ["LIMIT", 1]]
+  ↳ app/models/match.rb:99:in `block in update_won'
+  [1m[36mMember Update (0.1ms)[0m  [1m[33mUPDATE "members" SET "current_rank" = ?, "updated_at" = ? WHERE "members"."id" = ?[0m  [["current_rank", 4], ["updated_at", "2020-11-30 11:21:41.617480"], ["id", 49]]
+  ↳ app/models/match.rb:99:in `block in update_won'
+  [1m[36mMember Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "members" WHERE LOWER("members"."email") = LOWER(?) AND "members"."id" != ? LIMIT ?[0m  [["email", "D"], ["id", 49], ["LIMIT", 1]]
+  ↳ app/models/match.rb:103:in `update_won'
+  [1m[36mMember Update (0.1ms)[0m  [1m[33mUPDATE "members" SET "current_rank" = ?, "updated_at" = ? WHERE "members"."id" = ?[0m  [["current_rank", 3], ["updated_at", "2020-11-30 11:21:41.619861"], ["id", 49]]
+  ↳ app/models/match.rb:103:in `update_won'
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/match.rb:65:in `update_rank'
+  [1m[36mMember Load (0.0ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 47], ["LIMIT", 1]]
+  ↳ app/models/match.rb:66:in `update_rank'
+  [1m[36mMember Load (0.0ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 49], ["LIMIT", 1]]
+  ↳ app/models/match.rb:66:in `update_rank'
+  [1m[36mMatch Update (0.1ms)[0m  [1m[33mUPDATE "matches" SET "user_rank_new" = ?, "challenger_rank_new" = ?, "updated_at" = ? WHERE "matches"."id" = ?[0m  [["user_rank_new", 4], ["challenger_rank_new", 3], ["updated_at", "2020-11-30 11:21:41.623490"], ["id", 2]]
+  ↳ app/models/match.rb:66:in `update_rank'
+  [1m[35m (457.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/matches_controller.rb:13:in `new'
+Redirected to http://localhost:3000/matches
+Completed 302 Found in 514ms (ActiveRecord: 460.2ms | Allocations: 26513)
+
+
+Started GET "/matches" for ::1 at 2020-11-30 13:21:42 +0200
+Processing by MatchesController#index as HTML
+  Rendering matches/index.html.erb within layouts/application
+  [1m[36mMatch Load (0.4ms)[0m  [1m[34mSELECT "matches".* FROM "matches" ORDER BY created_at[0m
+  ↳ app/views/matches/index.html.erb:12
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 47], ["LIMIT", 1]]
+  ↳ app/views/matches/index.html.erb:17
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 48], ["LIMIT", 1]]
+  ↳ app/views/matches/index.html.erb:22
+  [1m[36mCACHE Member Load (0.0ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 47], ["LIMIT", 1]]
+  ↳ app/views/matches/index.html.erb:17
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 49], ["LIMIT", 1]]
+  ↳ app/views/matches/index.html.erb:22
+  Rendered matches/index.html.erb within layouts/application (Duration: 13.3ms | Allocations: 3594)
+  Rendered elements/_nav.html.erb (Duration: 0.0ms | Allocations: 6)
+Completed 200 OK in 19ms (Views: 15.6ms | ActiveRecord: 1.0ms | Allocations: 5602)
+
+
+Started GET "/members" for ::1 at 2020-11-30 13:21:43 +0200
+Processing by MembersController#index as HTML
+  Rendering members/index.html.erb within layouts/application
+  [1m[36mMember Load (0.4ms)[0m  [1m[34mSELECT "members".* FROM "members" ORDER BY current_rank[0m
+  ↳ app/views/members/index.html.erb:13
+  Rendered members/index.html.erb within layouts/application (Duration: 3.2ms | Allocations: 772)
+  Rendered elements/_nav.html.erb (Duration: 0.1ms | Allocations: 6)
+Completed 200 OK in 8ms (Views: 6.1ms | ActiveRecord: 0.4ms | Allocations: 2736)
+
+
+Started GET "/matches" for ::1 at 2020-11-30 13:26:42 +0200
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by MatchesController#index as HTML
+  Rendering matches/index.html.erb within layouts/application
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" ORDER BY created_at[0m
+  ↳ app/views/matches/index.html.erb:12
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 47], ["LIMIT", 1]]
+  ↳ app/views/matches/index.html.erb:17
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 48], ["LIMIT", 1]]
+  ↳ app/views/matches/index.html.erb:22
+  [1m[36mCACHE Member Load (0.0ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 47], ["LIMIT", 1]]
+  ↳ app/views/matches/index.html.erb:17
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 49], ["LIMIT", 1]]
+  ↳ app/views/matches/index.html.erb:22
+  Rendered matches/index.html.erb within layouts/application (Duration: 20.6ms | Allocations: 15433)
+  Rendered elements/_nav.html.erb (Duration: 0.0ms | Allocations: 6)
+Completed 200 OK in 25ms (Views: 21.7ms | ActiveRecord: 1.1ms | Allocations: 18810)
+
+
+Started GET "/matches/new" for ::1 at 2020-11-30 13:26:44 +0200
+Processing by MatchesController#new as HTML
+  Rendering matches/new.html.erb within layouts/application
+  [1m[36mMember Load (0.4ms)[0m  [1m[34mSELECT "members".* FROM "members"[0m
+  ↳ app/views/matches/new.html.erb:17:in `collect'
+  Rendered matches/new.html.erb within layouts/application (Duration: 8.3ms | Allocations: 2009)
+  Rendered elements/_nav.html.erb (Duration: 0.1ms | Allocations: 6)
+Completed 200 OK in 16ms (Views: 13.7ms | ActiveRecord: 0.4ms | Allocations: 3992)
+
+
+Started POST "/matches/new" for ::1 at 2020-11-30 13:26:52 +0200
+Processing by MatchesController#new as HTML
+  Parameters: {"authenticity_token"=>"72ntrbjV6V1AIpzB/xgPw9NOTMwxtpzHOs4vLdQc8iVCpvrdBqdwJR+WHphIqnuEw9WHQilX093o1IZu3t8Jqg==", "match"=>{"user_id"=>"47", "match_status"=>"challenger_won", "challenger_id"=>"46"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/matches_controller.rb:13:in `new'
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 47], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:13:in `new'
+  [1m[36mMember Load (0.0ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 46], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:13:in `new'
+  [1m[36mMatch Create (0.2ms)[0m  [1m[32mINSERT INTO "matches" ("user_id", "user_rank", "challenger_id", "challenger_rank", "created_at", "updated_at", "match_status") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["user_id", 47], ["user_rank", 4], ["challenger_id", 46], ["challenger_rank", 2], ["created_at", "2020-11-30 11:26:52.807570"], ["updated_at", "2020-11-30 11:26:52.807570"], ["match_status", "challenger_won"]]
+  ↳ app/controllers/matches_controller.rb:13:in `new'
+  [1m[36mMember Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "members" WHERE LOWER("members"."email") = LOWER(?) AND "members"."id" != ? LIMIT ?[0m  [["email", "B"], ["id", 47], ["LIMIT", 1]]
+  ↳ app/models/match.rb:26:in `update_match_count'
+  [1m[36mMember Update (0.1ms)[0m  [1m[33mUPDATE "members" SET "num_games" = ?, "updated_at" = ? WHERE "members"."id" = ?[0m  [["num_games", 3], ["updated_at", "2020-11-30 11:26:52.811022"], ["id", 47]]
+  ↳ app/models/match.rb:26:in `update_match_count'
+  [1m[36mMember Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "members" WHERE LOWER("members"."email") = LOWER(?) AND "members"."id" != ? LIMIT ?[0m  [["email", "A"], ["id", 46], ["LIMIT", 1]]
+  ↳ app/models/match.rb:27:in `update_match_count'
+  [1m[36mMember Update (0.1ms)[0m  [1m[33mUPDATE "members" SET "num_games" = ?, "updated_at" = ? WHERE "members"."id" = ?[0m  [["num_games", 1], ["updated_at", "2020-11-30 11:26:52.814638"], ["id", 46]]
+  ↳ app/models/match.rb:27:in `update_match_count'
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/match.rb:65:in `update_rank'
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 47], ["LIMIT", 1]]
+  ↳ app/models/match.rb:66:in `update_rank'
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 46], ["LIMIT", 1]]
+  ↳ app/models/match.rb:66:in `update_rank'
+  [1m[36mMatch Update (0.1ms)[0m  [1m[33mUPDATE "matches" SET "user_rank_new" = ?, "challenger_rank_new" = ?, "updated_at" = ? WHERE "matches"."id" = ?[0m  [["user_rank_new", 4], ["challenger_rank_new", 2], ["updated_at", "2020-11-30 11:26:52.819621"], ["id", 3]]
+  ↳ app/models/match.rb:66:in `update_rank'
+  [1m[35m (87.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/matches_controller.rb:13:in `new'
+Redirected to http://localhost:3000/matches
+Completed 302 Found in 111ms (ActiveRecord: 88.3ms | Allocations: 15689)
+
+
+Started GET "/matches" for ::1 at 2020-11-30 13:26:52 +0200
+Processing by MatchesController#index as HTML
+  Rendering matches/index.html.erb within layouts/application
+  [1m[36mMatch Load (0.5ms)[0m  [1m[34mSELECT "matches".* FROM "matches" ORDER BY created_at[0m
+  ↳ app/views/matches/index.html.erb:12
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 47], ["LIMIT", 1]]
+  ↳ app/views/matches/index.html.erb:17
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 48], ["LIMIT", 1]]
+  ↳ app/views/matches/index.html.erb:22
+  [1m[36mCACHE Member Load (0.0ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 47], ["LIMIT", 1]]
+  ↳ app/views/matches/index.html.erb:17
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 49], ["LIMIT", 1]]
+  ↳ app/views/matches/index.html.erb:22
+  [1m[36mCACHE Member Load (0.0ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 47], ["LIMIT", 1]]
+  ↳ app/views/matches/index.html.erb:17
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 46], ["LIMIT", 1]]
+  ↳ app/views/matches/index.html.erb:22
+  Rendered matches/index.html.erb within layouts/application (Duration: 16.6ms | Allocations: 5053)
+  Rendered elements/_nav.html.erb (Duration: 0.0ms | Allocations: 6)
+Completed 200 OK in 22ms (Views: 18.6ms | ActiveRecord: 1.2ms | Allocations: 7041)
+
+
+Started GET "/members" for ::1 at 2020-11-30 13:26:54 +0200
+Processing by MembersController#index as HTML
+  Rendering members/index.html.erb within layouts/application
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT "members".* FROM "members" ORDER BY current_rank[0m
+  ↳ app/views/members/index.html.erb:13
+  Rendered members/index.html.erb within layouts/application (Duration: 1.4ms | Allocations: 772)
+  Rendered elements/_nav.html.erb (Duration: 0.0ms | Allocations: 6)
+Completed 200 OK in 5ms (Views: 3.7ms | ActiveRecord: 0.2ms | Allocations: 2914)
+
+
+Started GET "/matches" for ::1 at 2020-11-30 13:30:44 +0200
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by MatchesController#index as HTML
+  Rendering matches/index.html.erb within layouts/application
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" ORDER BY created_at[0m
+  ↳ app/views/matches/index.html.erb:12
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 47], ["LIMIT", 1]]
+  ↳ app/views/matches/index.html.erb:17
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 48], ["LIMIT", 1]]
+  ↳ app/views/matches/index.html.erb:22
+  [1m[36mCACHE Member Load (0.0ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 47], ["LIMIT", 1]]
+  ↳ app/views/matches/index.html.erb:17
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 49], ["LIMIT", 1]]
+  ↳ app/views/matches/index.html.erb:22
+  [1m[36mCACHE Member Load (0.0ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 47], ["LIMIT", 1]]
+  ↳ app/views/matches/index.html.erb:17
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 46], ["LIMIT", 1]]
+  ↳ app/views/matches/index.html.erb:22
+  Rendered matches/index.html.erb within layouts/application (Duration: 19.7ms | Allocations: 16877)
+  Rendered elements/_nav.html.erb (Duration: 0.0ms | Allocations: 6)
+Completed 200 OK in 24ms (Views: 20.5ms | ActiveRecord: 1.1ms | Allocations: 20236)
+
+
+Started GET "/matches/new" for ::1 at 2020-11-30 13:30:48 +0200
+Processing by MatchesController#new as HTML
+  Rendering matches/new.html.erb within layouts/application
+  [1m[36mMember Load (0.4ms)[0m  [1m[34mSELECT "members".* FROM "members"[0m
+  ↳ app/views/matches/new.html.erb:17:in `collect'
+  Rendered matches/new.html.erb within layouts/application (Duration: 8.2ms | Allocations: 2008)
+  Rendered elements/_nav.html.erb (Duration: 0.1ms | Allocations: 6)
+Completed 200 OK in 17ms (Views: 14.7ms | ActiveRecord: 0.4ms | Allocations: 3988)
+
+
+Started POST "/matches/new" for ::1 at 2020-11-30 13:30:56 +0200
+Processing by MatchesController#new as HTML
+  Parameters: {"authenticity_token"=>"osAfyEy9Lz68JFtPMF/msB+G8ud/iU2cmBx07zp364cPDwi48s+2RuOQ2RaH7ZL3Dx05aWdoAoZKBt2sMLQQCA==", "match"=>{"user_id"=>"46", "match_status"=>"challenger_won", "challenger_id"=>"49"}}
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/matches_controller.rb:13:in `new'
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 46], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:13:in `new'
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 49], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:13:in `new'
+  [1m[36mMatch Create (0.6ms)[0m  [1m[32mINSERT INTO "matches" ("user_id", "challenger_id", "created_at", "updated_at", "match_status") VALUES (?, ?, ?, ?, ?)[0m  [["user_id", 46], ["challenger_id", 49], ["created_at", "2020-11-30 11:30:56.269139"], ["updated_at", "2020-11-30 11:30:56.269139"], ["match_status", "challenger_won"]]
+  ↳ app/controllers/matches_controller.rb:13:in `new'
+  [1m[36mMember Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "members" WHERE LOWER("members"."email") = LOWER(?) AND "members"."id" != ? LIMIT ?[0m  [["email", "A"], ["id", 46], ["LIMIT", 1]]
+  ↳ app/models/match.rb:26:in `update_match_count'
+  [1m[36mMember Update (0.3ms)[0m  [1m[33mUPDATE "members" SET "num_games" = ?, "updated_at" = ? WHERE "members"."id" = ?[0m  [["num_games", 2], ["updated_at", "2020-11-30 11:30:56.279645"], ["id", 46]]
+  ↳ app/models/match.rb:26:in `update_match_count'
+  [1m[36mMember Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "members" WHERE LOWER("members"."email") = LOWER(?) AND "members"."id" != ? LIMIT ?[0m  [["email", "D"], ["id", 49], ["LIMIT", 1]]
+  ↳ app/models/match.rb:27:in `update_match_count'
+  [1m[36mMember Update (0.1ms)[0m  [1m[33mUPDATE "members" SET "num_games" = ?, "updated_at" = ? WHERE "members"."id" = ?[0m  [["num_games", 2], ["updated_at", "2020-11-30 11:30:56.285210"], ["id", 49]]
+  ↳ app/models/match.rb:27:in `update_match_count'
+  [1m[36mMatch Update (0.1ms)[0m  [1m[33mUPDATE "matches" SET "user_rank" = ?, "challenger_rank" = ?, "updated_at" = ? WHERE "matches"."id" = ?[0m  [["user_rank", 2], ["challenger_rank", 3], ["updated_at", "2020-11-30 11:30:56.287601"], ["id", 4]]
+  ↳ app/models/match.rb:37:in `update_rank'
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 49], ["LIMIT", 1]]
+  ↳ app/models/match.rb:85:in `update_won'
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 46], ["LIMIT", 1]]
+  ↳ app/models/match.rb:86:in `update_won'
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."current_rank" = ? ORDER BY "members"."id" ASC LIMIT ?[0m  [["current_rank", 3], ["LIMIT", 1]]
+  ↳ app/models/match.rb:89:in `update_won'
+  [1m[36mMember Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "members" WHERE LOWER("members"."email") = LOWER(?) AND "members"."id" != ? LIMIT ?[0m  [["email", "D"], ["id", 49], ["LIMIT", 1]]
+  ↳ app/models/match.rb:90:in `update_won'
+  [1m[36mMember Update (0.1ms)[0m  [1m[33mUPDATE "members" SET "current_rank" = ?, "updated_at" = ? WHERE "members"."id" = ?[0m  [["current_rank", 2], ["updated_at", "2020-11-30 11:30:56.297571"], ["id", 49]]
+  ↳ app/models/match.rb:90:in `update_won'
+  [1m[36mMember Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "members" WHERE LOWER("members"."email") = LOWER(?) AND "members"."id" != ? LIMIT ?[0m  [["email", "A"], ["id", 46], ["LIMIT", 1]]
+  ↳ app/models/match.rb:91:in `update_won'
+  [1m[36mMember Update (0.1ms)[0m  [1m[33mUPDATE "members" SET "current_rank" = ?, "updated_at" = ? WHERE "members"."id" = ?[0m  [["current_rank", 3], ["updated_at", "2020-11-30 11:30:56.301745"], ["id", 46]]
+  ↳ app/models/match.rb:91:in `update_won'
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE (current_rank >= 2 AND current_rank < 3)[0m
+  ↳ app/models/match.rb:98:in `update_won'
+  [1m[36mMember Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "members" WHERE LOWER("members"."email") = LOWER(?) AND "members"."id" != ? LIMIT ?[0m  [["email", "D"], ["id", 49], ["LIMIT", 1]]
+  ↳ app/models/match.rb:99:in `block in update_won'
+  [1m[36mMember Update (0.1ms)[0m  [1m[33mUPDATE "members" SET "current_rank" = ?, "updated_at" = ? WHERE "members"."id" = ?[0m  [["current_rank", 3], ["updated_at", "2020-11-30 11:30:56.306447"], ["id", 49]]
+  ↳ app/models/match.rb:99:in `block in update_won'
+  [1m[36mMember Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "members" WHERE LOWER("members"."email") = LOWER(?) AND "members"."id" != ? LIMIT ?[0m  [["email", "D"], ["id", 49], ["LIMIT", 1]]
+  ↳ app/models/match.rb:103:in `update_won'
+  [1m[36mMember Update (0.1ms)[0m  [1m[33mUPDATE "members" SET "current_rank" = ?, "updated_at" = ? WHERE "members"."id" = ?[0m  [["current_rank", 2], ["updated_at", "2020-11-30 11:30:56.308495"], ["id", 49]]
+  ↳ app/models/match.rb:103:in `update_won'
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/match.rb:65:in `update_rank'
+  [1m[36mMember Load (0.0ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 46], ["LIMIT", 1]]
+  ↳ app/models/match.rb:66:in `update_rank'
+  [1m[36mMember Load (0.0ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 49], ["LIMIT", 1]]
+  ↳ app/models/match.rb:66:in `update_rank'
+  [1m[36mMatch Update (0.1ms)[0m  [1m[33mUPDATE "matches" SET "user_rank_new" = ?, "challenger_rank_new" = ?, "updated_at" = ? WHERE "matches"."id" = ?[0m  [["user_rank_new", 3], ["challenger_rank_new", 2], ["updated_at", "2020-11-30 11:30:56.312259"], ["id", 4]]
+  ↳ app/models/match.rb:66:in `update_rank'
+  [1m[35m (71.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/matches_controller.rb:13:in `new'
+Redirected to http://localhost:3000/matches
+Completed 302 Found in 132ms (ActiveRecord: 75.4ms | Allocations: 26021)
+
+
+Started GET "/matches" for ::1 at 2020-11-30 13:30:56 +0200
+Processing by MatchesController#index as HTML
+  Rendering matches/index.html.erb within layouts/application
+  [1m[36mMatch Load (0.3ms)[0m  [1m[34mSELECT "matches".* FROM "matches" ORDER BY created_at[0m
+  ↳ app/views/matches/index.html.erb:12
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 47], ["LIMIT", 1]]
+  ↳ app/views/matches/index.html.erb:17
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 48], ["LIMIT", 1]]
+  ↳ app/views/matches/index.html.erb:22
+  [1m[36mCACHE Member Load (0.0ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 47], ["LIMIT", 1]]
+  ↳ app/views/matches/index.html.erb:17
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 49], ["LIMIT", 1]]
+  ↳ app/views/matches/index.html.erb:22
+  [1m[36mCACHE Member Load (0.0ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 47], ["LIMIT", 1]]
+  ↳ app/views/matches/index.html.erb:17
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 46], ["LIMIT", 1]]
+  ↳ app/views/matches/index.html.erb:22
+  [1m[36mCACHE Member Load (0.0ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 46], ["LIMIT", 1]]
+  ↳ app/views/matches/index.html.erb:17
+  [1m[36mCACHE Member Load (0.0ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 49], ["LIMIT", 1]]
+  ↳ app/views/matches/index.html.erb:22
+  Rendered matches/index.html.erb within layouts/application (Duration: 13.4ms | Allocations: 6456)
+  Rendered elements/_nav.html.erb (Duration: 0.0ms | Allocations: 6)
+Completed 200 OK in 18ms (Views: 15.7ms | ActiveRecord: 0.7ms | Allocations: 8438)
+
+
+Started GET "/members" for ::1 at 2020-11-30 13:31:00 +0200
+Processing by MembersController#index as HTML
+  Rendering members/index.html.erb within layouts/application
+  [1m[36mMember Load (0.3ms)[0m  [1m[34mSELECT "members".* FROM "members" ORDER BY current_rank[0m
+  ↳ app/views/members/index.html.erb:13
+  Rendered members/index.html.erb within layouts/application (Duration: 2.1ms | Allocations: 772)
+  Rendered elements/_nav.html.erb (Duration: 0.1ms | Allocations: 6)
+Completed 200 OK in 7ms (Views: 5.4ms | ActiveRecord: 0.3ms | Allocations: 2918)
+
+
+Started GET "/members/new" for ::1 at 2020-11-30 13:33:23 +0200
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by MembersController#new as HTML
+  Rendering members/new.html.erb within layouts/application
+  Rendered members/new.html.erb within layouts/application (Duration: 1.8ms | Allocations: 1168)
+  Rendered elements/_nav.html.erb (Duration: 0.0ms | Allocations: 6)
+Completed 200 OK in 12ms (Views: 3.8ms | ActiveRecord: 0.4ms | Allocations: 9117)
+
+
+Started POST "/members/new" for ::1 at 2020-11-30 13:33:31 +0200
+Processing by MembersController#new as HTML
+  Parameters: {"authenticity_token"=>"nCCUzIc/YX++7AcIxqgOGS8cy8H/LyQFqJSqOAHoUsG54NohFy4K84ZMVlhZkmjVCQGnPLQxQynUn+kkIFbxdw==", "member"=>{"name"=>"E", "email"=>"E", "dob"=>"2020-11-20"}}
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/members_controller.rb:11:in `new'
+  [1m[36mMember Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "members" WHERE LOWER("members"."email") = LOWER(?) LIMIT ?[0m  [["email", "E"], ["LIMIT", 1]]
+  ↳ app/controllers/members_controller.rb:11:in `new'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "members"[0m
+  ↳ app/models/member.rb:13:in `set_rank'
+  [1m[36mMember Create (0.5ms)[0m  [1m[32mINSERT INTO "members" ("name", "email", "dob", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "E"], ["email", "E"], ["dob", "2020-11-20"], ["created_at", "2020-11-30 11:33:31.147737"], ["updated_at", "2020-11-30 11:33:31.147737"]]
+  ↳ app/controllers/members_controller.rb:11:in `new'
+  [1m[35m (70.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/members_controller.rb:11:in `new'
+Redirected to http://localhost:3000/members
+Completed 302 Found in 94ms (ActiveRecord: 72.1ms | Allocations: 6918)
+
+
+Started GET "/members" for ::1 at 2020-11-30 13:33:31 +0200
+Processing by MembersController#index as HTML
+  Rendering members/index.html.erb within layouts/application
+  [1m[36mMember Load (0.5ms)[0m  [1m[34mSELECT "members".* FROM "members" ORDER BY current_rank[0m
+  ↳ app/views/members/index.html.erb:13
+  Rendered members/index.html.erb within layouts/application (Duration: 3.4ms | Allocations: 819)
+  Rendered elements/_nav.html.erb (Duration: 0.1ms | Allocations: 6)
+Completed 200 OK in 14ms (Views: 10.7ms | ActiveRecord: 0.5ms | Allocations: 3179)
+
+
+Started GET "/members/new" for ::1 at 2020-11-30 13:34:00 +0200
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by MembersController#new as HTML
+  Rendering members/new.html.erb within layouts/application
+  Rendered members/new.html.erb within layouts/application (Duration: 1.7ms | Allocations: 1168)
+  Rendered elements/_nav.html.erb (Duration: 0.0ms | Allocations: 6)
+Completed 200 OK in 14ms (Views: 4.1ms | ActiveRecord: 0.7ms | Allocations: 9088)
+
+
+Started POST "/members/new" for ::1 at 2020-11-30 13:34:06 +0200
+Processing by MembersController#new as HTML
+  Parameters: {"authenticity_token"=>"/svigIJvJmoel1CaPbk6mZ1Vh+dMIT1OJSTX9E5I5IrbC6xtEn5N5iY3Acqig1xVu0jrGgc/WmJZL5Tob/ZHPA==", "member"=>{"name"=>"F", "email"=>"F", "dob"=>"2020-11-19"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/members_controller.rb:11:in `new'
+  [1m[36mMember Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "members" WHERE LOWER("members"."email") = LOWER(?) LIMIT ?[0m  [["email", "F"], ["LIMIT", 1]]
+  ↳ app/controllers/members_controller.rb:11:in `new'
+  [1m[36mMember Create (0.9ms)[0m  [1m[32mINSERT INTO "members" ("name", "email", "dob", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "F"], ["email", "F"], ["dob", "2020-11-19"], ["created_at", "2020-11-30 11:34:06.341125"], ["updated_at", "2020-11-30 11:34:06.341125"]]
+  ↳ app/controllers/members_controller.rb:11:in `new'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "members"[0m
+  ↳ app/models/member.rb:13:in `set_rank'
+  [1m[35m (65.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/members_controller.rb:11:in `new'
+Redirected to http://localhost:3000/members
+Completed 302 Found in 90ms (ActiveRecord: 67.2ms | Allocations: 6935)
+
+
+Started GET "/members" for ::1 at 2020-11-30 13:34:06 +0200
+Processing by MembersController#index as HTML
+  Rendering members/index.html.erb within layouts/application
+  [1m[36mMember Load (0.4ms)[0m  [1m[34mSELECT "members".* FROM "members" ORDER BY current_rank[0m
+  ↳ app/views/members/index.html.erb:13
+  Rendered members/index.html.erb within layouts/application (Duration: 3.2ms | Allocations: 857)
+  Rendered elements/_nav.html.erb (Duration: 0.1ms | Allocations: 6)
+Completed 200 OK in 10ms (Views: 7.5ms | ActiveRecord: 0.4ms | Allocations: 2858)
+
+
+Started GET "/members/new" for ::1 at 2020-11-30 13:34:15 +0200
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by MembersController#new as HTML
+  Rendering members/new.html.erb within layouts/application
+  Rendered members/new.html.erb within layouts/application (Duration: 7.5ms | Allocations: 3455)
+  Rendered elements/_nav.html.erb (Duration: 0.2ms | Allocations: 80)
+Completed 200 OK in 31ms (Views: 19.0ms | ActiveRecord: 0.5ms | Allocations: 15691)
+
+
+Started POST "/members/new" for ::1 at 2020-11-30 13:34:22 +0200
+Processing by MembersController#new as HTML
+  Parameters: {"authenticity_token"=>"SVpPsZLBXIElPxJhXvjDuPFYzQAHf28jBzWEXZ786uRsmgFcAtA3DR2fQzHBwqV010Wh/UxhCA97PsdBv0JJUg==", "member"=>{"name"=>"G", "email"=>"G", "dob"=>"2020-11-12"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/members_controller.rb:11:in `new'
+  [1m[36mMember Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "members" WHERE LOWER("members"."email") = LOWER(?) LIMIT ?[0m  [["email", "G"], ["LIMIT", 1]]
+  ↳ app/controllers/members_controller.rb:11:in `new'
+  [1m[36mMember Create (0.2ms)[0m  [1m[32mINSERT INTO "members" ("name", "email", "dob", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "G"], ["email", "G"], ["dob", "2020-11-12"], ["created_at", "2020-11-30 11:34:22.112541"], ["updated_at", "2020-11-30 11:34:22.112541"]]
+  ↳ app/controllers/members_controller.rb:11:in `new'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "members"[0m
+  ↳ app/models/member.rb:13:in `set_rank'
+  [1m[35m (674.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/members_controller.rb:11:in `new'
+Redirected to http://localhost:3000/members
+Completed 302 Found in 730ms (ActiveRecord: 675.3ms | Allocations: 7609)
+
+
+Started GET "/members" for ::1 at 2020-11-30 13:34:22 +0200
+Processing by MembersController#index as HTML
+  Rendering members/index.html.erb within layouts/application
+  [1m[36mMember Load (0.3ms)[0m  [1m[34mSELECT "members".* FROM "members" ORDER BY current_rank[0m
+  ↳ app/views/members/index.html.erb:13
+  Rendered members/index.html.erb within layouts/application (Duration: 2.4ms | Allocations: 1185)
+  Rendered elements/_nav.html.erb (Duration: 0.0ms | Allocations: 6)
+Completed 200 OK in 6ms (Views: 4.5ms | ActiveRecord: 0.3ms | Allocations: 3329)
+
+
+Started GET "/members/delete/47" for ::1 at 2020-11-30 13:35:21 +0200
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by MembersController#delete as HTML
+  Parameters: {"id"=>"47"}
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 47], ["LIMIT", 1]]
+  ↳ app/controllers/members_controller.rb:21:in `delete'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/members_controller.rb:22:in `delete'
+  [1m[36mMember Destroy (0.2ms)[0m  [1m[31mDELETE FROM "members" WHERE "members"."id" = ?[0m  [["id", 47]]
+  ↳ app/controllers/members_controller.rb:22:in `delete'
+  [1m[35m (1986.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/members_controller.rb:22:in `delete'
+Redirected to http://localhost:3000/members
+Started GET "/members/delete/46" for ::1 at 2020-11-30 13:35:23 +0200
+Completed 302 Found in 2005ms (ActiveRecord: 1987.0ms | Allocations: 12007)
+
+
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by MembersController#delete as HTML
+  Parameters: {"id"=>"46"}
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 46], ["LIMIT", 1]]
+  ↳ app/controllers/members_controller.rb:21:in `delete'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/members_controller.rb:22:in `delete'
+  [1m[36mMember Destroy (0.1ms)[0m  [1m[31mDELETE FROM "members" WHERE "members"."id" = ?[0m  [["id", 46]]
+  ↳ app/controllers/members_controller.rb:22:in `delete'
+  [1m[35m (1322.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/members_controller.rb:22:in `delete'
+Redirected to http://localhost:3000/members
+Completed 302 Found in 1336ms (ActiveRecord: 1323.0ms | Allocations: 11770)
+
+
+Started GET "/members" for ::1 at 2020-11-30 13:35:24 +0200
+Processing by MembersController#index as HTML
+  Rendering members/index.html.erb within layouts/application
+  [1m[36mMember Load (0.5ms)[0m  [1m[34mSELECT "members".* FROM "members" ORDER BY current_rank[0m
+  ↳ app/views/members/index.html.erb:13
+  Rendered members/index.html.erb within layouts/application (Duration: 3.5ms | Allocations: 814)
+  Rendered elements/_nav.html.erb (Duration: 0.2ms | Allocations: 6)
+Completed 200 OK in 12ms (Views: 9.7ms | ActiveRecord: 0.5ms | Allocations: 2966)
+
+
+Started GET "/members/delete/50" for ::1 at 2020-11-30 13:35:27 +0200
+Processing by MembersController#delete as HTML
+  Parameters: {"id"=>"50"}
+  [1m[36mMember Load (0.3ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 50], ["LIMIT", 1]]
+  ↳ app/controllers/members_controller.rb:21:in `delete'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/members_controller.rb:22:in `delete'
+  [1m[36mMember Destroy (0.5ms)[0m  [1m[31mDELETE FROM "members" WHERE "members"."id" = ?[0m  [["id", 50]]
+  ↳ app/controllers/members_controller.rb:22:in `delete'
+  [1m[35m (968.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/members_controller.rb:22:in `delete'
+Redirected to http://localhost:3000/members
+Completed 302 Found in 987ms (ActiveRecord: 969.5ms | Allocations: 5020)
+
+
+Started GET "/members" for ::1 at 2020-11-30 13:35:28 +0200
+Processing by MembersController#index as HTML
+  Rendering members/index.html.erb within layouts/application
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT "members".* FROM "members" ORDER BY current_rank[0m
+  ↳ app/views/members/index.html.erb:13
+  Rendered members/index.html.erb within layouts/application (Duration: 1.3ms | Allocations: 770)
+  Rendered elements/_nav.html.erb (Duration: 0.0ms | Allocations: 6)
+Completed 200 OK in 4ms (Views: 3.1ms | ActiveRecord: 0.2ms | Allocations: 2743)
+
+
+Started GET "/members/delete/51" for ::1 at 2020-11-30 13:35:29 +0200
+Processing by MembersController#delete as HTML
+  Parameters: {"id"=>"51"}
+  [1m[36mMember Load (0.3ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 51], ["LIMIT", 1]]
+  ↳ app/controllers/members_controller.rb:21:in `delete'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/members_controller.rb:22:in `delete'
+  [1m[36mMember Destroy (0.7ms)[0m  [1m[31mDELETE FROM "members" WHERE "members"."id" = ?[0m  [["id", 51]]
+  ↳ app/controllers/members_controller.rb:22:in `delete'
+  [1m[35m (442.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/members_controller.rb:22:in `delete'
+Redirected to http://localhost:3000/members
+Completed 302 Found in 460ms (ActiveRecord: 443.4ms | Allocations: 5030)
+
+
+Started GET "/members" for ::1 at 2020-11-30 13:35:29 +0200
+Processing by MembersController#index as HTML
+  Rendering members/index.html.erb within layouts/application
+  [1m[36mMember Load (0.6ms)[0m  [1m[34mSELECT "members".* FROM "members" ORDER BY current_rank[0m
+  ↳ app/views/members/index.html.erb:13
+  Rendered members/index.html.erb within layouts/application (Duration: 4.4ms | Allocations: 731)
+  Rendered elements/_nav.html.erb (Duration: 0.1ms | Allocations: 6)
+Completed 200 OK in 14ms (Views: 11.6ms | ActiveRecord: 0.6ms | Allocations: 2711)
+
+
+Started GET "/members/delete/52" for ::1 at 2020-11-30 13:35:30 +0200
+Processing by MembersController#delete as HTML
+  Parameters: {"id"=>"52"}
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 52], ["LIMIT", 1]]
+  ↳ app/controllers/members_controller.rb:21:in `delete'
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/members_controller.rb:22:in `delete'
+  [1m[36mMember Destroy (0.6ms)[0m  [1m[31mDELETE FROM "members" WHERE "members"."id" = ?[0m  [["id", 52]]
+  ↳ app/controllers/members_controller.rb:22:in `delete'
+  [1m[35m (750.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/members_controller.rb:22:in `delete'
+Redirected to http://localhost:3000/members
+Completed 302 Found in 766ms (ActiveRecord: 751.0ms | Allocations: 4881)
+
+
+Started GET "/members" for ::1 at 2020-11-30 13:35:31 +0200
+Processing by MembersController#index as HTML
+  Rendering members/index.html.erb within layouts/application
+  [1m[36mMember Load (0.5ms)[0m  [1m[34mSELECT "members".* FROM "members" ORDER BY current_rank[0m
+  ↳ app/views/members/index.html.erb:13
+  Rendered members/index.html.erb within layouts/application (Duration: 3.4ms | Allocations: 693)
+  Rendered elements/_nav.html.erb (Duration: 0.1ms | Allocations: 6)
+Completed 200 OK in 12ms (Views: 9.3ms | ActiveRecord: 0.5ms | Allocations: 2664)
+
+
+Started GET "/members/delete/48" for ::1 at 2020-11-30 13:35:31 +0200
+Processing by MembersController#delete as HTML
+  Parameters: {"id"=>"48"}
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 48], ["LIMIT", 1]]
+  ↳ app/controllers/members_controller.rb:21:in `delete'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/members_controller.rb:22:in `delete'
+  [1m[36mMember Destroy (0.7ms)[0m  [1m[31mDELETE FROM "members" WHERE "members"."id" = ?[0m  [["id", 48]]
+  ↳ app/controllers/members_controller.rb:22:in `delete'
+  [1m[35m (65.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/members_controller.rb:22:in `delete'
+Redirected to http://localhost:3000/members
+Completed 302 Found in 82ms (ActiveRecord: 66.5ms | Allocations: 4887)
+
+
+Started GET "/members" for ::1 at 2020-11-30 13:35:31 +0200
+Processing by MembersController#index as HTML
+  Rendering members/index.html.erb within layouts/application
+  [1m[36mMember Load (0.5ms)[0m  [1m[34mSELECT "members".* FROM "members" ORDER BY current_rank[0m
+  ↳ app/views/members/index.html.erb:13
+  Rendered members/index.html.erb within layouts/application (Duration: 3.6ms | Allocations: 653)
+  Rendered elements/_nav.html.erb (Duration: 0.1ms | Allocations: 6)
+Completed 200 OK in 12ms (Views: 8.7ms | ActiveRecord: 0.5ms | Allocations: 2617)
+
+
+Started GET "/members/delete/49" for ::1 at 2020-11-30 13:35:32 +0200
+Processing by MembersController#delete as HTML
+  Parameters: {"id"=>"49"}
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 49], ["LIMIT", 1]]
+  ↳ app/controllers/members_controller.rb:21:in `delete'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/members_controller.rb:22:in `delete'
+  [1m[36mMember Destroy (0.1ms)[0m  [1m[31mDELETE FROM "members" WHERE "members"."id" = ?[0m  [["id", 49]]
+  ↳ app/controllers/members_controller.rb:22:in `delete'
+  [1m[35m (603.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/members_controller.rb:22:in `delete'
+Redirected to http://localhost:3000/members
+Completed 302 Found in 617ms (ActiveRecord: 603.5ms | Allocations: 5005)
+
+
+Started GET "/members" for ::1 at 2020-11-30 13:35:33 +0200
+Processing by MembersController#index as HTML
+  Rendering members/index.html.erb within layouts/application
+  [1m[36mMember Load (0.3ms)[0m  [1m[34mSELECT "members".* FROM "members" ORDER BY current_rank[0m
+  ↳ app/views/members/index.html.erb:13
+  Rendered members/index.html.erb within layouts/application (Duration: 1.4ms | Allocations: 613)
+  Rendered elements/_nav.html.erb (Duration: 0.0ms | Allocations: 6)
+Completed 200 OK in 6ms (Views: 4.5ms | ActiveRecord: 0.3ms | Allocations: 2590)
+
+
+Started GET "/matches" for ::1 at 2020-11-30 13:35:34 +0200
+Processing by MatchesController#index as HTML
+  Rendering matches/index.html.erb within layouts/application
+  [1m[36mMatch Load (0.3ms)[0m  [1m[34mSELECT "matches".* FROM "matches" ORDER BY created_at[0m
+  ↳ app/views/matches/index.html.erb:12
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 47], ["LIMIT", 1]]
+  ↳ app/views/matches/index.html.erb:17
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 48], ["LIMIT", 1]]
+  ↳ app/views/matches/index.html.erb:22
+  [1m[36mCACHE Member Load (0.0ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 47], ["LIMIT", 1]]
+  ↳ app/views/matches/index.html.erb:17
+  [1m[36mMember Load (0.0ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 49], ["LIMIT", 1]]
+  ↳ app/views/matches/index.html.erb:22
+  [1m[36mCACHE Member Load (0.0ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 47], ["LIMIT", 1]]
+  ↳ app/views/matches/index.html.erb:17
+  [1m[36mMember Load (0.0ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 46], ["LIMIT", 1]]
+  ↳ app/views/matches/index.html.erb:22
+  [1m[36mCACHE Member Load (0.0ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 46], ["LIMIT", 1]]
+  ↳ app/views/matches/index.html.erb:17
+  [1m[36mCACHE Member Load (0.0ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 49], ["LIMIT", 1]]
+  ↳ app/views/matches/index.html.erb:22
+  Rendered matches/index.html.erb within layouts/application (Duration: 25.1ms | Allocations: 19409)
+  Rendered elements/_nav.html.erb (Duration: 0.0ms | Allocations: 6)
+Completed 200 OK in 39ms (Views: 26.8ms | ActiveRecord: 1.4ms | Allocations: 23391)
+
+
+Started GET "/matches/delete/1" for ::1 at 2020-11-30 13:35:35 +0200
+Processing by MatchesController#delete as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMatch Load (0.4ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:25:in `delete'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/matches_controller.rb:26:in `delete'
+  [1m[36mMatch Destroy (0.6ms)[0m  [1m[31mDELETE FROM "matches" WHERE "matches"."id" = ?[0m  [["id", 1]]
+  ↳ app/controllers/matches_controller.rb:26:in `delete'
+  [1m[35m (120.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/matches_controller.rb:26:in `delete'
+Redirected to http://localhost:3000/matches
+Completed 302 Found in 138ms (ActiveRecord: 121.3ms | Allocations: 5363)
+
+
+Started GET "/matches" for ::1 at 2020-11-30 13:35:35 +0200
+Processing by MatchesController#index as HTML
+  Rendering matches/index.html.erb within layouts/application
+  [1m[36mMatch Load (0.6ms)[0m  [1m[34mSELECT "matches".* FROM "matches" ORDER BY created_at[0m
+  ↳ app/views/matches/index.html.erb:12
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 47], ["LIMIT", 1]]
+  ↳ app/views/matches/index.html.erb:17
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 49], ["LIMIT", 1]]
+  ↳ app/views/matches/index.html.erb:22
+  [1m[36mCACHE Member Load (0.0ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 47], ["LIMIT", 1]]
+  ↳ app/views/matches/index.html.erb:17
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 46], ["LIMIT", 1]]
+  ↳ app/views/matches/index.html.erb:22
+  [1m[36mCACHE Member Load (0.0ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 46], ["LIMIT", 1]]
+  ↳ app/views/matches/index.html.erb:17
+  [1m[36mCACHE Member Load (0.0ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 49], ["LIMIT", 1]]
+  ↳ app/views/matches/index.html.erb:22
+  Rendered matches/index.html.erb within layouts/application (Duration: 19.5ms | Allocations: 9025)
+  Rendered elements/_nav.html.erb (Duration: 0.0ms | Allocations: 6)
+Completed 200 OK in 25ms (Views: 21.7ms | ActiveRecord: 1.2ms | Allocations: 11002)
+
+
+Started GET "/matches/delete/2" for ::1 at 2020-11-30 13:35:36 +0200
+Processing by MatchesController#delete as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mMatch Load (0.2ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:25:in `delete'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/matches_controller.rb:26:in `delete'
+  [1m[36mMatch Destroy (0.5ms)[0m  [1m[31mDELETE FROM "matches" WHERE "matches"."id" = ?[0m  [["id", 2]]
+  ↳ app/controllers/matches_controller.rb:26:in `delete'
+  [1m[35m (777.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/matches_controller.rb:26:in `delete'
+Redirected to http://localhost:3000/matches
+Completed 302 Found in 795ms (ActiveRecord: 778.0ms | Allocations: 4991)
+
+
+Started GET "/matches" for ::1 at 2020-11-30 13:35:37 +0200
+Processing by MatchesController#index as HTML
+  Rendering matches/index.html.erb within layouts/application
+  [1m[36mMatch Load (0.5ms)[0m  [1m[34mSELECT "matches".* FROM "matches" ORDER BY created_at[0m
+  ↳ app/views/matches/index.html.erb:12
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 47], ["LIMIT", 1]]
+  ↳ app/views/matches/index.html.erb:17
+  [1m[36mMember Load (0.3ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 46], ["LIMIT", 1]]
+  ↳ app/views/matches/index.html.erb:22
+  [1m[36mCACHE Member Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 46], ["LIMIT", 1]]
+  ↳ app/views/matches/index.html.erb:17
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 49], ["LIMIT", 1]]
+  ↳ app/views/matches/index.html.erb:22
+  Rendered matches/index.html.erb within layouts/application (Duration: 17.8ms | Allocations: 6313)
+  Rendered elements/_nav.html.erb (Duration: 0.1ms | Allocations: 6)
+Completed 200 OK in 24ms (Views: 21.0ms | ActiveRecord: 1.2ms | Allocations: 8288)
+
+
+Started GET "/matches/delete/3" for ::1 at 2020-11-30 13:35:37 +0200
+Processing by MatchesController#delete as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mMatch Load (0.3ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:25:in `delete'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/matches_controller.rb:26:in `delete'
+  [1m[36mMatch Destroy (0.5ms)[0m  [1m[31mDELETE FROM "matches" WHERE "matches"."id" = ?[0m  [["id", 3]]
+  ↳ app/controllers/matches_controller.rb:26:in `delete'
+  [1m[35m (285.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/matches_controller.rb:26:in `delete'
+Redirected to http://localhost:3000/matches
+Completed 302 Found in 302ms (ActiveRecord: 286.8ms | Allocations: 5007)
+
+
+Started GET "/matches" for ::1 at 2020-11-30 13:35:38 +0200
+Processing by MatchesController#index as HTML
+  Rendering matches/index.html.erb within layouts/application
+  [1m[36mMatch Load (0.5ms)[0m  [1m[34mSELECT "matches".* FROM "matches" ORDER BY created_at[0m
+  ↳ app/views/matches/index.html.erb:12
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 46], ["LIMIT", 1]]
+  ↳ app/views/matches/index.html.erb:17
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 49], ["LIMIT", 1]]
+  ↳ app/views/matches/index.html.erb:22
+  Rendered matches/index.html.erb within layouts/application (Duration: 12.6ms | Allocations: 3550)
+  Rendered elements/_nav.html.erb (Duration: 0.1ms | Allocations: 6)
+Completed 200 OK in 21ms (Views: 17.3ms | ActiveRecord: 0.9ms | Allocations: 5527)
+
+
+Started GET "/matches/delete/4" for ::1 at 2020-11-30 13:35:38 +0200
+Processing by MatchesController#delete as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mMatch Load (0.2ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:25:in `delete'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/matches_controller.rb:26:in `delete'
+  [1m[36mMatch Destroy (0.5ms)[0m  [1m[31mDELETE FROM "matches" WHERE "matches"."id" = ?[0m  [["id", 4]]
+  ↳ app/controllers/matches_controller.rb:26:in `delete'
+  [1m[35m (62.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/matches_controller.rb:26:in `delete'
+Redirected to http://localhost:3000/matches
+Completed 302 Found in 80ms (ActiveRecord: 63.6ms | Allocations: 4881)
+
+
+Started GET "/matches" for ::1 at 2020-11-30 13:35:38 +0200
+Processing by MatchesController#index as HTML
+  Rendering matches/index.html.erb within layouts/application
+  [1m[36mMatch Load (0.6ms)[0m  [1m[34mSELECT "matches".* FROM "matches" ORDER BY created_at[0m
+  ↳ app/views/matches/index.html.erb:12
+  Rendered matches/index.html.erb within layouts/application (Duration: 3.5ms | Allocations: 617)
+  Rendered elements/_nav.html.erb (Duration: 0.1ms | Allocations: 6)
+Completed 200 OK in 12ms (Views: 9.0ms | ActiveRecord: 0.6ms | Allocations: 2601)
+
+
+Started GET "/members" for ::1 at 2020-11-30 13:35:44 +0200
+Processing by MembersController#index as HTML
+  Rendering members/index.html.erb within layouts/application
+  [1m[36mMember Load (0.4ms)[0m  [1m[34mSELECT "members".* FROM "members" ORDER BY current_rank[0m
+  ↳ app/views/members/index.html.erb:13
+  Rendered members/index.html.erb within layouts/application (Duration: 2.9ms | Allocations: 613)
+  Rendered elements/_nav.html.erb (Duration: 0.1ms | Allocations: 6)
+Completed 200 OK in 11ms (Views: 8.2ms | ActiveRecord: 0.4ms | Allocations: 2587)
+
+
+Started GET "/members/new" for ::1 at 2020-11-30 13:35:45 +0200
+Processing by MembersController#new as HTML
+  Rendering members/new.html.erb within layouts/application
+  Rendered members/new.html.erb within layouts/application (Duration: 4.4ms | Allocations: 825)
+  Rendered elements/_nav.html.erb (Duration: 0.1ms | Allocations: 6)
+Completed 200 OK in 11ms (Views: 9.0ms | ActiveRecord: 0.0ms | Allocations: 2778)
+
+

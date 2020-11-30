@@ -18,56 +18,56 @@ class Match < ApplicationRecord
     end
 
     def update_match
-        self.user_rank = self.user.current_rank
-        self.challenger_rank = self.challenger.current_rank
+        user_rank = user.current_rank
+        challenger_rank = challenger.current_rank
     end
 
     def update_match_count
-        self.user.update(num_games: self.user.num_games+1)
-        self.challenger.update(num_games: self.challenger.num_games+1)
+        user.update(num_games: user.num_games + 1)
+        challenger.update(num_games: challenger.num_games + 1)
     end
 
     # #Ranking:
-    ## - higher rank wins = nothing
-    ## - Draw = lowwer rank -1 (unless = other player rank)
-    # - Lower rank wins = lower rank half difference (16 - 10) / 2 = 3
-	#	                = higher rank +1
+    # # - higher rank wins = nothing
+    # # - Draw = lowwer rank -1 (unless = other player rank)
+    # # - Lower rank wins = lower rank half difference (16 - 10) / 2 = 3
+	# #	                = higher rank +1
     def update_rank
         #set old ranks
-        self.update(user_rank: self.user.current_rank, challenger_rank: self.challenger.current_rank)
+        update(user_rank: user.current_rank, challenger_rank: challenger.current_rank)
 
-        case self.match_status
+        case match_status
         when 'user_won'
             #lower rank won 3 < 5-1
-            if self.challenger.current_rank < self.user.current_rank
+            if challenger.current_rank < user.current_rank
                 #update user rank
-                update_won(self, 'user')
+                update_won('user')
             end
         when 'challenger_won'
             #lower rank won 3 < 5-1
-            if self.user.current_rank < self.challenger.current_rank
+            if user.current_rank < challenger.current_rank
                 #update challenger rank
-                update_won(self, 'challenger')
+                update_won('challenger')
             end
         when 'draw'
             #update lower rank
-            if self.user.current_rank < (self.challenger.current_rank - 1)
+            if user.current_rank < (challenger.current_rank - 1)
                 #update challenger
-                update_draw(self, 'challenger')
+                update_draw('challenger')
             #update lower rank
-            elsif self.challenger.current_rank < (self.user.current_rank - 1)
+            elsif challenger.current_rank < (user.current_rank - 1)
                 #update user
-                update_draw(self, 'user')
+                update_draw('user')
             end
         end
 
         # set new rank after calc
         reload
-        self.update(user_rank_new: self.user.current_rank, challenger_rank_new: self.challenger.current_rank)
+        update(user_rank_new: user.current_rank, challenger_rank_new: challenger.current_rank)
     end
 
-    def update_draw(match, type)
-        update_id = (type == 'challenger') ? match.challenger_id : match.user_id
+    def update_draw(type)
+        update_id = (type == 'challenger') ? challenger_id : user_id
         user = Member.find(update_id)
         
         # Lower rank - 1
@@ -76,12 +76,12 @@ class Match < ApplicationRecord
         user.update(current_rank: (user.current_rank - 1))
     end
 
-    def update_won(match, type)
+    def update_won(type)
         
-        won_id = (type == 'challenger') ? match.challenger_id : match.user_id
-        lost_id = (type == 'challenger') ? match.user_id : match.challenger_id
-        won_rank = (type == 'challenger') ? match.challenger_rank : match.user_rank
-        lost_rank = (type == 'challenger') ? match.user_rank : match.challenger_rank
+        won_id = (type == 'challenger') ? challenger_id : user_id
+        lost_id = (type == 'challenger') ? user_id : challenger_id
+        won_rank = (type == 'challenger') ? challenger_rank : user_rank
+        lost_rank = (type == 'challenger') ? user_rank : challenger_rank
         member_won = Member.find(won_id)
         member_lost = Member.find(lost_id)
         
@@ -91,7 +91,7 @@ class Match < ApplicationRecord
         member_lost.update(current_rank: (member_lost.current_rank + 1))
         
         # Lower rank = lower rank half difference (16 - 10) / 2 = 3
-        new_rank = ((won_rank - lost_rank).to_f / 2).ceil
+        new_rank = won_rank - ((won_rank - lost_rank).to_f / 2).ceil
         
         #update all effected ranks
         update_members = Member.where("current_rank >= ? AND current_rank < ?",new_rank,won_rank).all
