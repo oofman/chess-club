@@ -43,14 +43,14 @@ class Match < ApplicationRecord
         when 'challenger_won'
             #lower rank won 3 < 5-1
             if match.user.rank < (match.challenger.rank - 1)
-                #update user rank
+                #update challenger rank
 
             end
         when 'draw'
             #update lower rank
             if match.user.rank < (match.challenger.rank - 1)
                 #update challenger
-                
+
             #update lower rank
             elsif match.challenger.rank < (match.user.rank - 1)
                 #update user
