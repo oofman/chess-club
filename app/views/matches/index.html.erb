@@ -14,13 +14,13 @@
         <tr>
             <td><%= i.created_at %></td>
             <td>
-              <%= i.user.name %><br/>
-              <%= i.user.email %>
+              <%= i.user.name rescue '' %><br/>
+              <%= i.user.email rescue '' %>
             </td>
             <td><%= @status_options[i.match_status] %></td>
             <td>
-              <%= i.challenger.name %><br/>
-              <%= i.challenger.email %>
+              <%= i.challenger.name rescue '' %><br/>
+              <%= i.challenger.email rescue '' %>
             </td>
             <td>
               <a href="/matches/delete/<%= i.id %>" >Delete Match</a>
