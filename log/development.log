@@ -8900,3 +8900,229 @@ Processing by MembersController#index as HTML
 Completed 200 OK in 12ms (Views: 9.4ms | ActiveRecord: 0.5ms | Allocations: 2704)
 
 
+Started GET "/" for ::1 at 2020-12-01 11:30:38 +0200
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#home as HTML
+  Rendering home/home.html.erb within layouts/application
+  Rendered home/home.html.erb within layouts/application (Duration: 10.0ms | Allocations: 186)
+  Rendered elements/_nav.html.erb (Duration: 4.2ms | Allocations: 80)
+Completed 200 OK in 56ms (Views: 45.7ms | ActiveRecord: 0.0ms | Allocations: 5500)
+
+
+Started GET "/matches" for ::1 at 2020-12-01 11:34:30 +0200
+Processing by MatchesController#index as HTML
+  Rendering matches/index.html.erb within layouts/application
+  [1m[36mMatch Load (41.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" ORDER BY created_at[0m
+  ↳ app/views/matches/index.html.erb:12
+  [1m[36mMember Load (7.9ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 53], ["LIMIT", 1]]
+  ↳ app/views/matches/index.html.erb:17
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 54], ["LIMIT", 1]]
+  ↳ app/views/matches/index.html.erb:22
+  [1m[36mCACHE Member Load (0.0ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 54], ["LIMIT", 1]]
+  ↳ app/views/matches/index.html.erb:17
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 55], ["LIMIT", 1]]
+  ↳ app/views/matches/index.html.erb:22
+  [1m[36mCACHE Member Load (0.0ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 53], ["LIMIT", 1]]
+  ↳ app/views/matches/index.html.erb:17
+  [1m[36mCACHE Member Load (0.0ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 55], ["LIMIT", 1]]
+  ↳ app/views/matches/index.html.erb:22
+  Rendered matches/index.html.erb within layouts/application (Duration: 216.0ms | Allocations: 19356)
+  Rendered elements/_nav.html.erb (Duration: 0.0ms | Allocations: 6)
+Completed 200 OK in 385ms (Views: 167.6ms | ActiveRecord: 55.5ms | Allocations: 23564)
+
+
+Started GET "/members" for ::1 at 2020-12-01 11:34:31 +0200
+Processing by MembersController#index as HTML
+  Rendering members/index.html.erb within layouts/application
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT "members".* FROM "members" ORDER BY current_rank[0m
+  ↳ app/views/members/index.html.erb:13
+  Rendered members/index.html.erb within layouts/application (Duration: 46.9ms | Allocations: 1018)
+  Rendered elements/_nav.html.erb (Duration: 0.0ms | Allocations: 6)
+Completed 200 OK in 54ms (Views: 51.0ms | ActiveRecord: 0.2ms | Allocations: 3593)
+
+
+Started GET "/members/delete/54" for ::1 at 2020-12-01 11:34:33 +0200
+Processing by MembersController#delete as HTML
+  Parameters: {"id"=>"54"}
+  [1m[36mMember Load (0.3ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 54], ["LIMIT", 1]]
+  ↳ app/controllers/members_controller.rb:21:in `delete'
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/members_controller.rb:22:in `delete'
+  [1m[36mMember Destroy (18.6ms)[0m  [1m[31mDELETE FROM "members" WHERE "members"."id" = ?[0m  [["id", 54]]
+  ↳ app/controllers/members_controller.rb:22:in `delete'
+  [1m[35m (117.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/members_controller.rb:22:in `delete'
+Redirected to http://localhost:3000/members
+Completed 302 Found in 155ms (ActiveRecord: 136.8ms | Allocations: 5528)
+
+
+Started GET "/members" for ::1 at 2020-12-01 11:34:33 +0200
+Processing by MembersController#index as HTML
+  Rendering members/index.html.erb within layouts/application
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT "members".* FROM "members" ORDER BY current_rank[0m
+  ↳ app/views/members/index.html.erb:13
+  Rendered members/index.html.erb within layouts/application (Duration: 1.8ms | Allocations: 692)
+  Rendered elements/_nav.html.erb (Duration: 0.0ms | Allocations: 6)
+Completed 200 OK in 6ms (Views: 4.8ms | ActiveRecord: 0.2ms | Allocations: 2666)
+
+
+Started GET "/members/delete/53" for ::1 at 2020-12-01 11:34:33 +0200
+Processing by MembersController#delete as HTML
+  Parameters: {"id"=>"53"}
+  [1m[36mMember Load (0.3ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 53], ["LIMIT", 1]]
+  ↳ app/controllers/members_controller.rb:21:in `delete'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/members_controller.rb:22:in `delete'
+  [1m[36mMember Destroy (0.5ms)[0m  [1m[31mDELETE FROM "members" WHERE "members"."id" = ?[0m  [["id", 53]]
+  ↳ app/controllers/members_controller.rb:22:in `delete'
+  [1m[35m (97.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/members_controller.rb:22:in `delete'
+Redirected to http://localhost:3000/members
+Completed 302 Found in 117ms (ActiveRecord: 98.0ms | Allocations: 5063)
+
+
+Started GET "/members" for ::1 at 2020-12-01 11:34:33 +0200
+Processing by MembersController#index as HTML
+  Rendering members/index.html.erb within layouts/application
+  [1m[36mMember Load (0.6ms)[0m  [1m[34mSELECT "members".* FROM "members" ORDER BY current_rank[0m
+  ↳ app/views/members/index.html.erb:13
+  Rendered members/index.html.erb within layouts/application (Duration: 4.5ms | Allocations: 654)
+  Rendered elements/_nav.html.erb (Duration: 0.1ms | Allocations: 6)
+Completed 200 OK in 12ms (Views: 9.4ms | ActiveRecord: 0.6ms | Allocations: 2620)
+
+
+Started GET "/members/delete/55" for ::1 at 2020-12-01 11:34:34 +0200
+Processing by MembersController#delete as HTML
+  Parameters: {"id"=>"55"}
+  [1m[36mMember Load (0.3ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 55], ["LIMIT", 1]]
+  ↳ app/controllers/members_controller.rb:21:in `delete'
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/members_controller.rb:22:in `delete'
+  [1m[36mMember Destroy (0.5ms)[0m  [1m[31mDELETE FROM "members" WHERE "members"."id" = ?[0m  [["id", 55]]
+  ↳ app/controllers/members_controller.rb:22:in `delete'
+  [1m[35m (66.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/members_controller.rb:22:in `delete'
+Redirected to http://localhost:3000/members
+Completed 302 Found in 85ms (ActiveRecord: 67.3ms | Allocations: 4900)
+
+
+Started GET "/members" for ::1 at 2020-12-01 11:34:34 +0200
+Processing by MembersController#index as HTML
+  Rendering members/index.html.erb within layouts/application
+  [1m[36mMember Load (0.3ms)[0m  [1m[34mSELECT "members".* FROM "members" ORDER BY current_rank[0m
+  ↳ app/views/members/index.html.erb:13
+  Rendered members/index.html.erb within layouts/application (Duration: 2.7ms | Allocations: 614)
+  Rendered elements/_nav.html.erb (Duration: 0.0ms | Allocations: 6)
+Completed 200 OK in 10ms (Views: 7.0ms | ActiveRecord: 0.3ms | Allocations: 2580)
+
+
+Started GET "/matches" for ::1 at 2020-12-01 11:34:35 +0200
+Processing by MatchesController#index as HTML
+  Rendering matches/index.html.erb within layouts/application
+  [1m[36mMatch Load (0.3ms)[0m  [1m[34mSELECT "matches".* FROM "matches" ORDER BY created_at[0m
+  ↳ app/views/matches/index.html.erb:12
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 53], ["LIMIT", 1]]
+  ↳ app/views/matches/index.html.erb:17
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 54], ["LIMIT", 1]]
+  ↳ app/views/matches/index.html.erb:22
+  [1m[36mCACHE Member Load (0.0ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 54], ["LIMIT", 1]]
+  ↳ app/views/matches/index.html.erb:17
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 55], ["LIMIT", 1]]
+  ↳ app/views/matches/index.html.erb:22
+  [1m[36mCACHE Member Load (0.0ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 53], ["LIMIT", 1]]
+  ↳ app/views/matches/index.html.erb:17
+  [1m[36mCACHE Member Load (0.0ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 55], ["LIMIT", 1]]
+  ↳ app/views/matches/index.html.erb:22
+  Rendered matches/index.html.erb within layouts/application (Duration: 12.9ms | Allocations: 9026)
+  Rendered elements/_nav.html.erb (Duration: 0.0ms | Allocations: 6)
+Completed 200 OK in 17ms (Views: 14.8ms | ActiveRecord: 0.7ms | Allocations: 11014)
+
+
+Started GET "/matches/delete/1" for ::1 at 2020-12-01 11:34:37 +0200
+Processing by MatchesController#delete as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMatch Load (0.5ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:25:in `delete'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/matches_controller.rb:26:in `delete'
+  [1m[36mMatch Destroy (0.5ms)[0m  [1m[31mDELETE FROM "matches" WHERE "matches"."id" = ?[0m  [["id", 1]]
+  ↳ app/controllers/matches_controller.rb:26:in `delete'
+  [1m[35m (77.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/matches_controller.rb:26:in `delete'
+Redirected to http://localhost:3000/matches
+Completed 302 Found in 94ms (ActiveRecord: 78.9ms | Allocations: 5011)
+
+
+Started GET "/matches" for ::1 at 2020-12-01 11:34:37 +0200
+Processing by MatchesController#index as HTML
+  Rendering matches/index.html.erb within layouts/application
+  [1m[36mMatch Load (0.3ms)[0m  [1m[34mSELECT "matches".* FROM "matches" ORDER BY created_at[0m
+  ↳ app/views/matches/index.html.erb:12
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 54], ["LIMIT", 1]]
+  ↳ app/views/matches/index.html.erb:17
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 55], ["LIMIT", 1]]
+  ↳ app/views/matches/index.html.erb:22
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 53], ["LIMIT", 1]]
+  ↳ app/views/matches/index.html.erb:17
+  [1m[36mCACHE Member Load (0.0ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 55], ["LIMIT", 1]]
+  ↳ app/views/matches/index.html.erb:22
+  Rendered matches/index.html.erb within layouts/application (Duration: 10.2ms | Allocations: 6549)
+  Rendered elements/_nav.html.erb (Duration: 0.0ms | Allocations: 6)
+Completed 200 OK in 15ms (Views: 13.4ms | ActiveRecord: 0.7ms | Allocations: 8651)
+
+
+Started GET "/matches/delete/2" for ::1 at 2020-12-01 11:34:37 +0200
+Processing by MatchesController#delete as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mMatch Load (0.3ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:25:in `delete'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/matches_controller.rb:26:in `delete'
+  [1m[36mMatch Destroy (0.6ms)[0m  [1m[31mDELETE FROM "matches" WHERE "matches"."id" = ?[0m  [["id", 2]]
+  ↳ app/controllers/matches_controller.rb:26:in `delete'
+  [1m[35m (67.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/matches_controller.rb:26:in `delete'
+Redirected to http://localhost:3000/matches
+Completed 302 Found in 83ms (ActiveRecord: 68.3ms | Allocations: 4879)
+
+
+Started GET "/matches" for ::1 at 2020-12-01 11:34:37 +0200
+Processing by MatchesController#index as HTML
+  Rendering matches/index.html.erb within layouts/application
+  [1m[36mMatch Load (0.3ms)[0m  [1m[34mSELECT "matches".* FROM "matches" ORDER BY created_at[0m
+  ↳ app/views/matches/index.html.erb:12
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 53], ["LIMIT", 1]]
+  ↳ app/views/matches/index.html.erb:17
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."id" = ? LIMIT ?[0m  [["id", 55], ["LIMIT", 1]]
+  ↳ app/views/matches/index.html.erb:22
+  Rendered matches/index.html.erb within layouts/application (Duration: 8.8ms | Allocations: 3550)
+  Rendered elements/_nav.html.erb (Duration: 0.1ms | Allocations: 6)
+Completed 200 OK in 16ms (Views: 13.6ms | ActiveRecord: 0.7ms | Allocations: 5529)
+
+
+Started GET "/matches/delete/3" for ::1 at 2020-12-01 11:34:38 +0200
+Processing by MatchesController#delete as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:25:in `delete'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/matches_controller.rb:26:in `delete'
+  [1m[36mMatch Destroy (0.3ms)[0m  [1m[31mDELETE FROM "matches" WHERE "matches"."id" = ?[0m  [["id", 3]]
+  ↳ app/controllers/matches_controller.rb:26:in `delete'
+  [1m[35m (102.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/matches_controller.rb:26:in `delete'
+Redirected to http://localhost:3000/matches
+Completed 302 Found in 112ms (ActiveRecord: 103.2ms | Allocations: 4887)
+
+
+Started GET "/matches" for ::1 at 2020-12-01 11:34:38 +0200
+Processing by MatchesController#index as HTML
+  Rendering matches/index.html.erb within layouts/application
+  [1m[36mMatch Load (0.4ms)[0m  [1m[34mSELECT "matches".* FROM "matches" ORDER BY created_at[0m
+  ↳ app/views/matches/index.html.erb:12
+  Rendered matches/index.html.erb within layouts/application (Duration: 2.5ms | Allocations: 617)
+  Rendered elements/_nav.html.erb (Duration: 0.1ms | Allocations: 6)
+Completed 200 OK in 9ms (Views: 6.8ms | ActiveRecord: 0.4ms | Allocations: 2591)
+
+
