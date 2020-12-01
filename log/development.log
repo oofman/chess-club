@@ -9126,3 +9126,23 @@ Processing by MatchesController#index as HTML
 Completed 200 OK in 9ms (Views: 6.8ms | ActiveRecord: 0.4ms | Allocations: 2591)
 
 
+Started GET "/" for ::1 at 2020-12-01 11:53:43 +0200
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#home as HTML
+  Rendering home/home.html.erb within layouts/application
+  Rendered home/home.html.erb within layouts/application (Duration: 0.5ms | Allocations: 255)
+  Rendered elements/_nav.html.erb (Duration: 0.1ms | Allocations: 80)
+Completed 200 OK in 10ms (Views: 5.9ms | ActiveRecord: 0.0ms | Allocations: 6046)
+
+
+Started GET "/members" for ::1 at 2020-12-01 11:54:26 +0200
+Processing by MembersController#index as HTML
+  Rendering members/index.html.erb within layouts/application
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members" ORDER BY current_rank[0m
+  ↳ app/views/members/index.html.erb:13
+  Rendered members/index.html.erb within layouts/application (Duration: 4.4ms | Allocations: 1391)
+  Rendered elements/_nav.html.erb (Duration: 0.0ms | Allocations: 6)
+Completed 200 OK in 18ms (Views: 8.5ms | ActiveRecord: 0.4ms | Allocations: 5733)
+
+

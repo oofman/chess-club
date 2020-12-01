@@ -69,7 +69,7 @@ class Match < ApplicationRecord
         lost_id = (who_won == 'challenger') ? user_id : challenger_id
         won_rank = (who_won == 'challenger') ? challenger_rank : user_rank
         lost_rank = (who_won == 'challenger') ? user_rank : challenger_rank
-        member_won = Member.find(won_id)
+        member_won = Member.find(won_id) # (1)
         member_lost = Member.find(lost_id)
         
         # Higher rank + 1
@@ -86,8 +86,11 @@ class Match < ApplicationRecord
             update_member.update(current_rank: (update_member.current_rank + 1))
         end
         
-        #update winning rank
+        #update winning rank # (2)
         member_won.update(current_rank: new_rank)
+        # reduce query count from 2 to 1 (get & set)
+        # sql = "UPDATE members SET current_rank = #{new_rank} WHERE id = #{won_id} LIMIT 1"
+        # ActiveRecord::Base.connection.select_all(sql)
     end
 
 end
