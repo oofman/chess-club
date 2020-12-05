@@ -1,8 +1,14 @@
 # =============================
 ## Chess Club to do:
 # =============================
+Running:
+1 - Ruby 2.7.0
+2 - Rails 6.0.3.4
+3 - rails s
+4 - Open http://localhost:3000/
 ## DB Design
 # =============================
+* Makes use of sqlite for ease of use
 Memebers (Crud)
 ```
 -name
@@ -25,8 +31,8 @@ Games
 ```
 #1 - Basic Crud for Members
 #2 - Submit Match 
-3 - Update Rank
-4 - Leader board (members index)
+#3 - Update Rank
+#4 - Leader board (members index)
 ```
 # =============================
 ```
