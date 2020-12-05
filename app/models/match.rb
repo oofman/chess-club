@@ -18,8 +18,8 @@ class Match < ApplicationRecord
     end
 
     def update_match
-        user_rank = user.current_rank
-        challenger_rank = challenger.current_rank
+        self.user_rank = user.current_rank
+        self.challenger_rank = challenger.current_rank
     end
 
     def update_match_count
@@ -38,16 +38,20 @@ class Match < ApplicationRecord
             #set old ranks
             update(user_rank: user.current_rank, challenger_rank: challenger.current_rank)
 
-            if match_status == 'user_won' && (challenger.current_rank < user.current_rank)
-                who_won = 'user'
-            elsif match_status == 'challenger_won' && (user.current_rank < challenger.current_rank)
-                who_won = 'challenger'
-            elsif match_status == 'draw' && (user.current_rank < (challenger.current_rank - 1))
-                who_won = 'challenger'
-            elsif match_status == 'draw' && (challenger.current_rank < (user.current_rank - 1))
-                who_won = 'user'
-            else #do nothing in some edge cases
-                who_won = false
+            # Filtering out edge case
+            case match_status
+            when 'user_won'
+                who_won = challenger.current_rank < user.current_rank ? 'user' : false
+            when 'challenger_won'
+                who_won = (user.current_rank < challenger.current_rank) ? 'challenger' : false
+            when 'draw'
+                if (challenger.current_rank < (user.current_rank - 1))
+                    who_won = 'user'
+                elsif (user.current_rank < (challenger.current_rank - 1))
+                    who_won = 'challenger'
+                else
+                    who_won = false
+                end
             end
             (match_status == 'draw') ? update_draw(who_won) : update_won(who_won) if who_won
 
@@ -60,48 +64,36 @@ class Match < ApplicationRecord
     end
 
     def update_draw(who_won)
-        update_id = (who_won == 'challenger') ? challenger_id : user_id
-        user = Member.find(update_id)
+        won_rank = (who_won == 'challenger') ? challenger_rank : user_rank
+        won_id = (who_won == 'challenger') ? challenger_id : user_id
         
         # Lower rank - 1
-        member_update = Member.where(current_rank: (user.current_rank - 1)).first
-        member_update.update(current_rank: (update_member.current_rank + 1))
-        user.update(current_rank: (user.current_rank - 1))
+        sql = "UPDATE members SET current_rank = #{won_rank} WHERE current_rank = #{(won_rank - 1)} LIMIT 1"
+        ActiveRecord::Base.connection.execute(sql)
+        sql = "UPDATE members SET current_rank = #{(won_rank - 1)} WHERE id = #{won_id} LIMIT 1"
+        ActiveRecord::Base.connection.execute(sql)
     end
 
     def update_won(who_won)
-        
         won_id = (who_won == 'challenger') ? challenger_id : user_id
         lost_id = (who_won == 'challenger') ? user_id : challenger_id
         won_rank = (who_won == 'challenger') ? challenger_rank : user_rank
         lost_rank = (who_won == 'challenger') ? user_rank : challenger_rank
-        #member_won = Member.find(won_id)
-        #member_lost = Member.find(lost_id)
         
         # Higher rank + 1 (single switch)
-        #member_lost_update = Member.where(current_rank: (member_lost.current_rank + 1)).first
-        #member_lost_update.update(current_rank: member_lost_update.current_rank - 1)
-        sql = "UPDATE members SET current_rank = #{lost_rank} WHERE current_rank = #{(lost_rank+1)} LIMIT 1"
+        sql = "UPDATE members SET current_rank = #{lost_rank} WHERE current_rank = #{(lost_rank + 1)} LIMIT 1"
         ActiveRecord::Base.connection.execute(sql)
-        #member_lost.update(current_rank: (member_lost.current_rank + 1))
-        sql = "UPDATE members SET current_rank = #{(lost_rank+1)} WHERE id = #{lost_id} LIMIT 1"
+        sql = "UPDATE members SET current_rank = #{(lost_rank + 1)} WHERE id = #{lost_id} LIMIT 1"
         ActiveRecord::Base.connection.execute(sql)
         
         # Lower rank = lower rank half difference (16 - 10) / 2 = 3
         new_rank = won_rank - ((won_rank - lost_rank).to_f / 2).ceil
         
-        #update all effected ranks
-        #update_members = Member.where("current_rank >= ? AND current_rank < ?",new_rank,won_rank).all
-        #update_members.each do |update_member|
-        #    update_member.update(current_rank: (update_member.current_rank + 1))
-        #end
-        (new_rank...won_rank).each do |curr_rank|
-            sql = "UPDATE members SET current_rank = #{(curr_rank+1)} WHERE current_rank = #{curr_rank} LIMIT 1"
-            ActiveRecord::Base.connection.execute(sql)
-        end
+        # Shift everyone involved
+        sql = "UPDATE members SET current_rank = (current_rank+1) WHERE current_rank >= #{new_rank} AND current_rank < #{won_rank}"
+        ActiveRecord::Base.connection.execute(sql)
         
-        #update winning rank
-        #member_won.update(current_rank: new_rank)
+        # Update winning rank
         sql = "UPDATE members SET current_rank = #{new_rank} WHERE id = #{won_id} LIMIT 1"
         ActiveRecord::Base.connection.execute(sql)
     end
